@@ -5,53 +5,13 @@
 // Redirects to: '../Home/MedicalHome.js' || '../Home/PatientHome.js'
 
 import React, { Component } from 'react';
-
+import { authUsersLogin } from "../../actions/index";
+import { connect } from "react-redux";
 import axios from 'axios'
 
 import { Paper, Grid, TextField, Button, Typography } from '@material-ui/core';
 
-export class LoginForm extends Component {
-  state = {
-    credentials: {
-      username: '',
-      password: ''
-    },
-    loggedIn: false
-  };
 
-  handleChange = e => {
-    this.setState({
-      credentials: {
-        ...this.state.credentials,
-        [e.target.name]: e.target.value
-      }
-    });
-  };
-
-  login = e => {
-    e.preventDefault();
-    axios
-      .post(
-        "http://localhost:5002/api/login",
-        this.state.credentials
-      )
-      .then(response => {
-        // console.log("response", response);
-        const { data } = response;
-
-        localStorage.setItem("token", data.payload);
-        this.setState({ ...this.state, loggedIn: true });
-
-      });
-  };
-
-  componentDidMount() {
-    if (localStorage.getItem("token")) {
-      this.setState({ ...this.state, loggedIn: true });
-    } else {
-      this.setState({ ...this.state, loggedIn: false });
-    }
-  }
 
   render() {
     return (
@@ -90,7 +50,47 @@ export class LoginForm extends Component {
       </div>
     )
   }
-}
+
 
 export default LoginForm;
 
+
+
+
+
+
+
+
+// export class LoginForm extends Component {
+//   state = {
+//     credentials: {
+//       username: '',
+//       password: ''
+//     },
+//     loggedIn: false
+//   };
+
+//   handleChange = e => {
+//     this.setState({
+//       credentials: {
+//         ...this.state.credentials,
+//         [e.target.name]: e.target.value
+//       }
+//     });
+//   };
+
+//   login = e => {
+//     console.log(this.state.credentials)
+//     e.preventDefault();
+//     authUsersLogin();
+
+      
+//   };
+
+//   componentDidMount() {
+//     if (localStorage.getItem("token")) {
+//       this.setState({ ...this.state, loggedIn: true });
+//     } else {
+//       this.setState({ ...this.state, loggedIn: false });
+//     }
+//   }
