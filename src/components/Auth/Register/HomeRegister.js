@@ -15,7 +15,7 @@ export default function HomePage() {
         <div>
             <Navbar />
             <TextContainer className='bgrnd' >
-                <p>Thanks for chooseing Immune! </p>
+                <p>Thanks for choosing Immune! </p>
                 <p>Create an account by choosing your role.</p>
                 <Link to="/register/patient">
                     <Button>Patient</Button>

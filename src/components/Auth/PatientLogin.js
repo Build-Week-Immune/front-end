@@ -10,8 +10,9 @@ import { Paper, Grid, TextField, Button } from '@material-ui/core';
 const PatientLogin = (props) => {
 
     const [patientLogin, setPatientLogin] = useState({
-        patientName: "",
-        patientPassword: ""
+      password: "",
+      username: "",
+      role: "user"
     });
 
     const handleChange = e => {
@@ -22,10 +23,10 @@ const PatientLogin = (props) => {
     };
 
     const login = e => {
-        console.log("login component", patientLogin);
         e.preventDefault();
-        props.authUsersLogin(patientLogin, props);
-        console.log("Post action-creator trigger", patientLogin)
+        console.log("login component", patientLogin);
+        props.authUsersLogin(patientLogin, props.history);
+        
     }
 
 
@@ -42,7 +43,7 @@ const PatientLogin = (props) => {
                   name="username"
                   margin="normal"
                   variant="outlined"
-                  value={props.patientName}
+                  value={patientLogin.username}
                   onChange={handleChange}
                   required
                 />
@@ -53,7 +54,7 @@ const PatientLogin = (props) => {
                   name="password"
                   margin="normal"
                   variant="outlined"
-                  value={props.patientPassword}
+                  value={patientLogin.password}
                   onChange={handleChange}
                   required
                 />
@@ -68,9 +69,9 @@ const PatientLogin = (props) => {
 
 
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        authUsersLogin
+        authUsersLogin: (patientLogin, history) => dispatch(authUsersLogin(patientLogin, history))
     }
 }
 
