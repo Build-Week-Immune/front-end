@@ -17,7 +17,7 @@ export const authUsersLogin = (patientLogin, props) => dispatch => {
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
       localStorage.setItem("user_token", res.data.token);
       localStorage.setItem("user_id", res.data.id);
-      props.history.push("/patient-dashboard");
+      props.history.push("/");
     })
     .catch(err => {
       console.log(
