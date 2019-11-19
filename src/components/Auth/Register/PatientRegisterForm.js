@@ -9,30 +9,10 @@ import { connect } from "react-redux";
 import Navbar from '../../Bars/Navbar';
 import Footer from '../../Bars/Footer';
 
-import {Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles} from '@material-ui/core';
+import { patientSignUpRequest } from "../../../actions/PatientRegister";
+
+import { Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-
-//PATIENT REGISTER FUNCTION
-const PatientRegister = props => {
-//set state
-    const [patientRegister, setPatientRegister] = useState({
-        //DATA WE NEED FROM PATIENT TO REGISTER
-        patientEmail: "",
-        patientPassword: "",
-        patientFullName: ""
-    });
-
-    const handleChange = e => {
-        setPatientRegister({
-            ...patientRegister,
-            [e.target.name]: e.target.value
-        });
-    };
-
-    const register = e => {
-        e.preventDefault();
-    }
-}
 
 /*************************  Start of Patient Registration Form *************************/
 const useStyles = makeStyles(theme => ({
@@ -56,71 +36,104 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function PatientRegisterForm() {
-    const classes = useStyles();
-    return (
-        <div>
-        <Navbar />
-        <div className={classes.paper}>
-            <Typography component="h1" variant="h5">
-              You are a patient.
+function PatientRegisterForm(props) {
+  const classes = useStyles();
+
+  const [patientRegister, setPatientRegister] = useState({
+    //DATA WE NEED FROM PATIENT TO REGISTER
+    password: "",
+    username: "",
+    role: "user"
+  });
+
+  const handleChange = e => {
+    setPatientRegister({
+      ...patientRegister,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const register = e => {
+    e.preventDefault();
+    console.log(patientRegister);
+    props.patientSignUpRequest(patientRegister, props.history);
+  }
+
+  return (
+    <div>
+      <Navbar />
+      <div className={classes.paper}>
+        <Typography component="h1" variant="h5">
+          You are a patient.
             </Typography>
-            <Typography component="h1" variant="h5">
-              Let's create your account.
+        <Typography component="h1" variant="h5">
+          Let's create your account.
             </Typography>
-            <form className={classes.form} noValidate>
-              <Grid container spacing={2}>
-                  <Grid item xs={12}>
-                  <TextField
-                      autoComplete="name"
-                      name="name"
-                      variant="outlined"
-                      required
-                      id="name"
-                      label="Full Name"
-                      autoFocus
-                  />
-                  </Grid>
-                  <Grid item xs={12}>
-                  <TextField
-                      variant="outlined"
-                      required
-                      id="email"
-                      label="Email Address"
-                      name="email"
-                      autoComplete="email"
-                  />
-                  </Grid>
-                  <Grid item xs={12}>
-                  <TextField
-                      variant="outlined"
-                      required
-                      name="password"
-                      label="Password"
-                      type="password"
-                      id="password"
-                      autoComplete="current-password"
-                  />
-                  </Grid>
-                  <Grid item xs={12}>
-                  <FormControlLabel
-                      control={<Checkbox value="agreeToTerms" color="primary" />}
-                      label="I agree to Terms and Conditions of Immune"
-                  />
-                  </Grid>
-              </Grid>
-              <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-              >
-                  Complete Account Creation
+        <form onSubmit={register} className={classes.form} noValidate>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                autoComplete="name"
+                name="username"
+                variant="outlined"
+                onChange={handleChange}
+                value={patientRegister.username}
+                required
+                id="name"
+                label="username"
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                name="password"
+                onChange={handleChange}
+                value={patientRegister.password}
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <FormControlLabel
+                required 
+                control={<Checkbox value="agreeToTerms" color="primary" />}
+                label="I agree to Terms and Conditions of Immune"
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Complete Account Creation
               </Button>
-            </form>
-        </div>
-        <Footer />
-        </div>
-    );
+        </form>
+      </div>
+      <Footer />
+    </div>
+  );
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    patientSignUpRequest:(patientInfo, history) => dispatch(patientSignUpRequest(patientInfo, history))
+  }
+}
+// store
+// mapStateToProps(store)
+// function some(){
+//   return function(pickles) {
+//     console.log(pickles)
+//   }
+// }
+// const myFunct = some()
+// myFunct()
+
+export default connect(null, mapDispatchToProps)(PatientRegisterForm);
+
 /************************* End of Patient Registration Form *************************/

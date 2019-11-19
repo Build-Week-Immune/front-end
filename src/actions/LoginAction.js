@@ -6,7 +6,7 @@ export const LOGIN_FAILURE = "USER_LOGIN_FAILURE";
 
 
 
-export const authUsersLogin = (patientLogin, props) => dispatch => {
+export const authUsersLogin = (patientLogin, history) => dispatch => {
   dispatch({ type: LOGIN_LOADING });
 
   axios
@@ -17,7 +17,7 @@ export const authUsersLogin = (patientLogin, props) => dispatch => {
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
       localStorage.setItem("user_token", res.data.token);
       localStorage.setItem("user_id", res.data.id);
-      props.history.push("/");
+      history.push("/");
     })
     .catch(err => {
       console.log(
