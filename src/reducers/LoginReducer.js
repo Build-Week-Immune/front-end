@@ -1,32 +1,32 @@
-import { LOADING, SUCCESS, FAILURE } from '../actions/index';
+import { LOGIN_LOADING, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/LoginAction';
 
 const initialState = {
-    beers: [],
+    user: "",
     error: null,
-    isLoading: false
+    loggedIn: false
 }
 
 export const reducer = (state = initialState, action) => {
     console.log("reducer", action);
     switch (action.type) {
-        case LOADING:
+        case LOGIN_LOADING:
             return {
                 ...state,
                 error: null,
-                isLoading: true
+                loggedIn: true
             }
-        case SUCCESS:
+        case LOGIN_SUCCESS:
             return {
                 ...state,
-                beers: action.payload,
-                isLoading: false
+                credentials: action.payload,
+                loggedIn: false
             }
-        case FAILURE:
+        case LOGIN_FAILURE:
             return {
                 ...state,
-                beers: [],
+                credentials:"",
                 error: action.payload,
-                isLoading: false
+                loggedIn: false
             }
         default:
             return state;
