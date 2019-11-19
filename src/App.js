@@ -9,7 +9,8 @@
 import React from 'react';
 import Navbar from './components/Bars/Navbar';
 import Footer from './components/Bars/Footer';
-import Login from './components/Auth/Login';
+import PatientLogin from './components/Auth/PatientLogin';
+
 
 import './App.css';
 
@@ -17,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Login />
+      <PatientLogin />
       <Footer />
     </div>
   );
