@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { applyMiddleware, createStore } from 'redux';
-import { reducer } from './reducers/index';
+import { rootReducer } from './reducers/index';
 
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -16,7 +16,7 @@ import App from './App';
 
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(reducer,
+const store = createStore(rootReducer,
     composeWithDevTools(applyMiddleware(thunk))
 )
 
