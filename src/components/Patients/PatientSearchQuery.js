@@ -1,0 +1,1 @@
+// Contains a search query for patient cards

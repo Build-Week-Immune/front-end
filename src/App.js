@@ -7,6 +7,8 @@
 // Connects to: './components/Auth/Login.js' || './components/Register/HomeRegister.js' || Marketing Page
 
 import React from 'react';
+import Navbar from './components/Bars/Navbar';
+import Footer from './components/Bars/Footer';
 import Login from './components/Auth/Login';
 
 import './App.css';
@@ -14,7 +16,9 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <Login />
+      <Footer />
     </div>
   );
 }
