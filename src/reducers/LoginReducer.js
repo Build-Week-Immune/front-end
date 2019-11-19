@@ -1,4 +1,4 @@
-import { LOGIN_LOADING, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/LoginAction';
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/LoginAction';
 
 const initialState = {
     user: "",
@@ -6,10 +6,10 @@ const initialState = {
     loggedIn: false
 }
 
-export const reducer = (state = initialState, action) => {
+const LoginReducer = (state = initialState, action) => {
     console.log("reducer", action);
     switch (action.type) {
-        case LOGIN_LOADING:
+        case LOGIN_REQUEST:
             return {
                 ...state,
                 error: null,
@@ -32,3 +32,4 @@ export const reducer = (state = initialState, action) => {
             return state;
     }
 }
+export default LoginReducer;

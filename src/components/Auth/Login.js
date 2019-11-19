@@ -5,8 +5,9 @@
 // Redirects to: '../Home/MedicalHome.js' || '../Home/PatientHome.js'
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import axios from 'axios'
+import { logInUser } from '../../actions/index';
 
 import { Paper, Grid, TextField, Button, Typography } from '@material-ui/core';
 
@@ -15,8 +16,7 @@ export class LoginForm extends Component {
     credentials: {
       username: '',
       password: ''
-    },
-    loggedIn: false
+    }
   };
 
   handleChange = e => {
@@ -30,28 +30,10 @@ export class LoginForm extends Component {
 
   login = e => {
     e.preventDefault();
-    axios
-      .post(
-        "http://localhost:5002/api/login",
-        this.state.credentials
-      )
-      .then(response => {
-        // console.log("response", response);
-        const { data } = response;
-
-        localStorage.setItem("token", data.payload);
-        this.setState({ ...this.state, loggedIn: true });
-
-      });
+    logInUser(this.state.credentials);
   };
 
-  componentDidMount() {
-    if (localStorage.getItem("token")) {
-      this.setState({ ...this.state, loggedIn: true });
-    } else {
-      this.setState({ ...this.state, loggedIn: false });
-    }
-  }
+
 
   render() {
     return (
@@ -92,5 +74,11 @@ export class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+function mapDispatchToProps() {
+  return {
+    logInUser
+  }
+}
+
+export default connect(null, mapDispatchToProps)(LoginForm);
 
