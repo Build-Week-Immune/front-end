@@ -32,6 +32,7 @@ export default function Navbar() {
                 Immune
               </Typography>
               <Button color="inherit">Login</Button>
+              <Button color="inherit">Create Account</Button>
             </Toolbar>
           </AppBar>
         </div>
