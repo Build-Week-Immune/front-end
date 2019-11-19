@@ -1,44 +1,69 @@
-// This page contains a form for new medical staff to register
-// Once a medical staff registers, they are navigated to the login page
+// This page contains a form for new patient to register
+// Once a patient registers, they are navigated to the login page
 
 // Redirects to: '../Auth/Login.js'
 
-import React from 'react';
+import React, { useState } from "react";
+import { connect } from "react-redux";
+
 import Navbar from '../../Bars/Navbar';
 import Footer from '../../Bars/Footer';
 
-import {Button, TextField, FormControlLabel, Checkbox, Link, Grid, Box, makeStyles, Container} from '@material-ui/core';
+import {Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles(theme => ({
-    '@global': {
-      body: {
-        backgroundColor: theme.palette.common.white,
-      },
-    },
-    paper: {
-      marginTop: theme.spacing(8),
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    },
-    form: {
-      width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(3),
-    },
-    submit: {
-      margin: theme.spacing(3, 0, 2),
-    },
-  }));
+//PATIENT REGISTER FUNCTION
+const PatientRegister = props => {
+//set state
+    const [patientRegister, setPatientRegister] = useState({
+        //DATA WE NEED FROM PATIENT TO REGISTER
+        patientEmail: "",
+        patientPassword: "",
+        patientFullName: ""
+    });
 
-export default function HomePage() {
+    const handleChange = e => {
+        setPatientRegister({
+            ...patientRegister,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const register = e => {
+        e.preventDefault();
+    }
+}
+
+/*************************  Start of Patient Registration Form *************************/
+const useStyles = makeStyles(theme => ({
+  '@global': {
+    body: {
+      backgroundColor: theme.palette.common.white,
+    },
+  },
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
+export default function PatientRegisterForm() {
     const classes = useStyles();
     return (
         <div>
         <Navbar />
         <div className={classes.paper}>
             <Typography component="h1" variant="h5">
-              You are a medical professional.
+              You are a patient.
             </Typography>
             <Typography component="h1" variant="h5">
               Let's create your account.
@@ -98,3 +123,4 @@ export default function HomePage() {
         </div>
     );
 }
+/************************* End of Patient Registration Form *************************/

@@ -17,7 +17,7 @@ export default function HomePage() {
             <TextContainer className='bgrnd' >
                 <p>Thanks for chooseing Immune! </p>
                 <p>Create an account by choosing your role.</p>
-                <Link to="">
+                <Link to="/register/patient">
                     <Button>Patient</Button>
                 </Link>
                 <Link to="/register/medical">
