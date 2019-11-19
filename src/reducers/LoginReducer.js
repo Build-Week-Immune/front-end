@@ -1,9 +1,10 @@
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/LoginAction';
 
 const initialState = {
-    user: "",
+    credentials: "",
     error: null,
-    loggedIn: false
+    loggedIn: false,
+    session: !!sessionStorage.jwt
 }
 
 const LoginReducer = (state = initialState, action) => {
@@ -16,10 +17,12 @@ const LoginReducer = (state = initialState, action) => {
                 loggedIn: true
             }
         case LOGIN_SUCCESS:
+                browserHistory.push('/')
             return {
                 ...state,
                 credentials: action.payload,
-                loggedIn: false
+                loggedIn: false,
+                session: !!sessionStorage.jwt
             }
         case LOGIN_FAILURE:
             return {

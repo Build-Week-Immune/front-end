@@ -8,20 +8,38 @@ export const loginRequest = () => ({ type: LOGIN_REQUEST })
 export const loginSuccess = (user) => ({ type: LOGIN_SUCCESS, payload: user })
 export const loginFailure = (error) => ({ type: LOGIN_FAILURE, payload: error })
 
-export const login = (username, password) => {
-    return dispatch => {
-        dispatch(loginRequest({ username }));
+// export const login = (username, password) => {
+//     return dispatch => {
+//         dispatch(loginRequest({ username }));
 
-        userService.login(username, password)
-            .then(
-                user => { 
-                    dispatch(loginSuccess(user));
-                    history.push('/');
-                },
-                error => {
-                    dispatch(loginFailure(error));
-                    dispatch(alertActions.error(error));
-                }
-            );
-    };
+        
+//             .then(
+//                 user => { 
+//                     dispatch(loginSuccess(user));
+//                     history.push('/');
+//                 },
+//                 error => {
+//                     dispatch(loginFailure(error));
+//                     dispatch(alertActions.error(error));
+//                 }
+//             );
+//     };
+// };
+
+export const logInUser = (credentials) => async (dispatch) => {
+    try {
+        dispatch(loginRequest());
+
+        axios.post('')
+            .then(response => {
+                console.log('logInUser action', response)
+                const info = response.data
+                dispatch(
+                    loginSuccess(info)
+                )
+            })
+
+    } catch (error) {
+        dispatch(loginFailure(error))
+    }
 };
