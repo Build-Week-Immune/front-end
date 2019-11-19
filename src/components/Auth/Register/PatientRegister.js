@@ -6,7 +6,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-
 //PATIENT REGISTER FUNCTION
 const PatientRegister = props => {
 //set state

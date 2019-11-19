@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// Comment provider if things go wrong
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { applyMiddleware, createStore } from 'redux';
@@ -21,6 +22,7 @@ const store = createStore(rootReducer,
 )
 
 ReactDOM.render(
+    // Comment out provider and router if things go wrong
     <Provider store={store} >
         <Router>
             <App />

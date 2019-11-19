@@ -8,8 +8,7 @@
 
 import React from 'react';
 import styled from "styled-components";
-//import { Link as This_Link } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 import Navbar from '../Bars/Navbar';
 import Footer from '../Bars/Footer';
 import '../../App.css'
@@ -24,7 +23,9 @@ export default function HomePage() {
                 <p>your immunization</p>
                 <p>records</p>
                 <ButtonContainer>
-                Create Account
+                    <Link to="/register">
+                        Create Account
+                    </Link>
                 </ButtonContainer>
             </TextContainer>
             <CardsContainer>

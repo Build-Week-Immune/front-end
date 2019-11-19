@@ -1,10 +1,10 @@
 // Contains the footer for all elements
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import { makeStyles, BottomNavigation, BottomNavigationAction, Typography } from '@material-ui/core';
+// import BottomNavigation from '@material-ui/core/BottomNavigation';
+// import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
@@ -35,7 +35,7 @@ export default function SimpleBottomNavigation() {
     >
     <BottomNavigationAction icon={<FavoriteIcon color="disabled" />} />
     <Typography variant="h6" className={classes.text}>
-      <Link to="./" style={{textDecoration: 'none', color: 'white'}}>Immune</Link>
+      <Link to="/" style={{textDecoration: 'none', color: 'white'}}>Immune</Link>
     </Typography>
     </BottomNavigation>
   );
