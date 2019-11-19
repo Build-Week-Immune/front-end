@@ -28,12 +28,14 @@ export default function Navbar() {
           <AppBar position="static">
             <Toolbar>
               <Typography variant="h6" className={classes.title}>
-                <Link to="./" style={{textDecoration: 'none', color: 'white'}}>Immune</Link>
+                <Link to="/" style={{textDecoration: 'none', color: 'white'}}>Immune</Link>
               </Typography>
-              <Link to="./login">
+              <Link to="/login">
                 <Button color="inherit" style={{textDecoration: 'none', color: 'white'}}>Login</Button>
               </Link>
-              <Button color="inherit">Create Account</Button>
+              <Link to="/register">
+                <Button color="inherit">Create Account</Button>
+              </Link>
             </Toolbar>
           </AppBar>
         </div>
