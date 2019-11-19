@@ -1,27 +1,29 @@
-import axios from "axios"
+import axiosWithAuth from "../utils/axiosWithAuth"
 
-export const LOGIN_REQUEST = "LOGIN_REQUEST"
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
-export const LOGIN_FAILURE = "FAILURE"
 
-export const loginRequest = (user) => ({ type: LOGIN_REQUEST })
-export const loginSuccess = (user) => ({ type: LOGIN_SUCCESS, payload: data })
-export const loginFailure = (error) => ({ type: LOGIN_FAILURE, payload: data })
+export const LOGIN_LOADING = "USER_LOGIN_START";
+export const LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "USER_LOGIN_FAILURE";
 
-export const login = (username, password) => {
-    return dispatch => {
-        dispatch(loginRequest({ username }));
 
-        userService.login(username, password)
-            .then(
-                user => { 
-                    dispatch(loginSuccess(user));
-                    history.push('/');
-                },
-                error => {
-                    dispatch(loginFailure(error));
-                    dispatch(alertActions.error(error));
-                }
-            );
-    };
 
+export const authUsersLogin = (patientLogin, props) => dispatch => {
+  dispatch({ type: LOGIN_LOADING });
+
+  axiosWithAuth()
+    .post(`/api/auth/login`, patientLogin)
+    .then(res => {
+      console.log( "In login action-creator", res);
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+      localStorage.setItem("user_token", res.data.token);
+      localStorage.setItem("user_id", res.data.id);
+      props.history.push("/patient-dashboard");
+    })
+    .catch(err => {
+      console.log(
+        `This is the failure console.log in index.js - user_login`,
+        err
+      );
+      dispatch({ type: LOGIN_FAILURE, payload: err.response });
+    });
+};
