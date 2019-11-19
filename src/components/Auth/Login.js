@@ -1,3 +1,9 @@
+// This is the login page
+// This page asks for the user's email address, password, and account type
+// After the user enters the credentials, the user is navigated to PatientHomePage, or MedicalHomePage
+
+// Redirects to: '../Home/MedicalHome.js' || '../Home/PatientHome.js'
+
 import React, { Component } from 'react';
 
 import axios from 'axios'
