@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Avatar, Button, CssBaseline, TextField, Typography, makeStyles, Container} from '@material-ui/core';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import {Button, TextField, makeStyles, Grid, Paper} from '@material-ui/core';
+//import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { authUsersLogin } from "../../actions/index";
 import { connect } from "react-redux";
 import Navbar from '../Bars/Navbar';
@@ -27,12 +27,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function PatientLogin(props) {
+
+const PatientLogin = (props) => {
     const classes = useStyles();
 
     const [patientLogin, setPatientLogin] = useState({
-        patientName: "",
-        patientPassword: ""
+      password: "",
+      username: "",
+      role: "user"
     });
 
     const handleChange = e => {
@@ -43,63 +45,53 @@ function PatientLogin(props) {
     };
 
     const login = e => {
-        console.log("login component", patientLogin);
         e.preventDefault();
-        props.authUsersLogin(patientLogin, props);
-        console.log("Post action-creator trigger", patientLogin)
+        console.log("login component", patientLogin);
+        props.authUsersLogin(patientLogin, props.history);
+        
     }
 
-  return (
-    <div>
-      <Navbar />
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <div className={classes.paper}>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <form className={classes.form} noValidate>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign In
-            </Button>
-          </form>
+    return (
+        <div>
+          <Navbar />
+          <Grid container >
+            <Paper className={classes.paper}>
+              <form onSubmit={login} className={classes.form}>
+                
+                <TextField
+                  id="outlined-basic"
+                  label="username"
+                  name="username"
+                  margin="normal"
+                  variant="outlined"
+                  value={patientLogin.username}
+                  onChange={handleChange}
+                  required
+                />
+                <TextField
+                  // type="password" 
+                  id="outlined-basic"
+                  label="password"
+                  name="password"
+                  margin="normal"
+                  variant="outlined"
+                  value={patientLogin.password}
+                  onChange={handleChange}
+                  required
+                />
+                <Button type="submit" className={classes.submit}>Submit</Button>
+              </form>
+            </Paper>
+          </Grid> 
+          <Footer />
         </div>
-      </Container>
-      <Footer />
-    </div>
   );
 }
 
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        authUsersLogin
+        authUsersLogin: (patientLogin, history) => dispatch(authUsersLogin(patientLogin, history))
     }
 }
 
