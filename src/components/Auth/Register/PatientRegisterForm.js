@@ -12,28 +12,6 @@ import Footer from '../../Bars/Footer';
 import {Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
-//PATIENT REGISTER FUNCTION
-const PatientRegister = props => {
-//set state
-    const [patientRegister, setPatientRegister] = useState({
-        //DATA WE NEED FROM PATIENT TO REGISTER
-        patientEmail: "",
-        patientPassword: "",
-        patientFullName: ""
-    });
-
-    const handleChange = e => {
-        setPatientRegister({
-            ...patientRegister,
-            [e.target.name]: e.target.value
-        });
-    };
-
-    const register = e => {
-        e.preventDefault();
-    }
-}
-
 /*************************  Start of Patient Registration Form *************************/
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -57,6 +35,24 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function PatientRegisterForm() {
+    const [patientRegister, setPatientRegister] = useState({
+      //DATA WE NEED FROM PATIENT TO REGISTER
+      patientEmail: "",
+      patientPassword: "",
+      patientFullName: ""
+    });
+
+    const handleChange = e => {
+        setPatientRegister({
+            ...patientRegister,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const register = e => {
+        e.preventDefault();
+    }
+    
     const classes = useStyles();
     return (
         <div>
@@ -104,6 +100,7 @@ export default function PatientRegisterForm() {
                   </Grid>
                   <Grid item xs={12}>
                   <FormControlLabel
+                      required
                       control={<Checkbox value="agreeToTerms" color="primary" />}
                       label="I agree to Terms and Conditions of Immune"
                   />

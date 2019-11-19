@@ -1,12 +1,34 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import {Avatar, Button, CssBaseline, TextField, Typography, makeStyles, Container} from '@material-ui/core';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { authUsersLogin } from "../../actions/index";
 import { connect } from "react-redux";
 import Navbar from '../Bars/Navbar';
 import Footer from '../Bars/Footer';
 
-import { Paper, Grid, TextField, Button } from '@material-ui/core';
+const useStyles = makeStyles(theme => ({
+  '@global': {
+    body: {
+      backgroundColor: theme.palette.common.white,
+    },
+  },
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
 
-const PatientLogin = (props) => {
+function PatientLogin(props) {
+    const classes = useStyles();
 
     const [patientLogin, setPatientLogin] = useState({
         patientName: "",
@@ -27,44 +49,52 @@ const PatientLogin = (props) => {
         console.log("Post action-creator trigger", patientLogin)
     }
 
-
-    return (
-        <div>
-          <Navbar />
-          <Grid container >
-            <Paper style={{ width: '100%', margin: 100, padding: 10, boxShadow: '0 0 20px 5px blue' }}>
-              <form onSubmit={login}>
-                
-                <TextField
-                  id="outlined-basic"
-                  label="username"
-                  name="username"
-                  margin="normal"
-                  variant="outlined"
-                  value={props.patientName}
-                  onChange={handleChange}
-                  required
-                />
-                <TextField
-                  // type="password" 
-                  id="outlined-basic"
-                  label="password"
-                  name="password"
-                  margin="normal"
-                  variant="outlined"
-                  value={props.patientPassword}
-                  onChange={handleChange}
-                  required
-                />
-                <Button type="submit" style={{ background: 'blue', color: 'white' }} >Submit</Button>
-              </form>
-            </Paper>
-          </Grid> 
-          <Footer />
+  return (
+    <div>
+      <Navbar />
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <form className={classes.form} noValidate>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoFocus
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign In
+            </Button>
+          </form>
         </div>
-    )
-};
-
+      </Container>
+      <Footer />
+    </div>
+  );
+}
 
 
 const mapDispatchToProps = () => {
