@@ -1,11 +1,23 @@
+// This is the home page of our app
+// This page contains a nav bar (including a sign in link), a footer bar, and a main component
+// Nav bar of this page includes a text 'Immune' at top left, and link to sign in page top right
+// The main component includes link to Create Account page
+// The footer contains a link to marketing page
+
+// Connects to: './components/Auth/Login.js' || './components/Register/HomeRegister.js' || Marketing Page
+
 import React from 'react';
 import styled from "styled-components";
+//import { Link as This_Link } from "react-router-dom";
 
+import Navbar from '../Bars/Navbar';
+import Footer from '../Bars/Footer';
 import '../../App.css'
 
-export default function TopHome() {
+export default function HomePage() {
     return (
         <div>
+            <Navbar />
             <TextContainer className='bgrnd' >
                 <p>A convinent way to</p>
                 <p>track and retrieve</p>
@@ -30,6 +42,7 @@ export default function TopHome() {
                     <p>Immune is the fastest way to input medical data. It decreases the time medical staff spends in front of the computer and gets them back with what matters most, the patients.</p>
                 </TextCardContainer>
             </CardsContainer>
+            <Footer />
         </div>
     );
 }

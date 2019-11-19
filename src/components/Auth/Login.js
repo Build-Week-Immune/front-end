@@ -5,9 +5,7 @@
 // Redirects to: '../Home/MedicalHome.js' || '../Home/PatientHome.js'
 
 import React, { Component } from 'react';
-
 import axios from 'axios'
-
 import { Paper, Grid, TextField, Button, Typography } from '@material-ui/core';
 
 export class LoginForm extends Component {

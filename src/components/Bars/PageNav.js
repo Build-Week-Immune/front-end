@@ -1,11 +1,11 @@
-// Contains the nav bar for front page
+// Contains nav bar for all pages except front page
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -30,10 +30,9 @@ export default function Navbar() {
               <Typography variant="h6" className={classes.title}>
                 Immune
               </Typography>
-              <Link to="./login">
-                <Button color="inherit">Login</Button>
-              </Link>
-              <Button color="inherit">Create Account</Button>
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+              <MenuIcon />
+              </IconButton>
             </Toolbar>
           </AppBar>
         </div>
