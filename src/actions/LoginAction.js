@@ -5,7 +5,7 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
 export const LOGIN_FAILURE = "FAILURE"
 
 export const loginRequest = () => ({ type: LOGIN_REQUEST })
-export const loginSuccess = (user) => ({ type: LOGIN_SUCCESS, payload: user })
+export const loginSuccess = () => ({ type: LOGIN_SUCCESS })
 export const loginFailure = (error) => ({ type: LOGIN_FAILURE, payload: error })
 
 // export const login = (username, password) => {
@@ -30,12 +30,13 @@ export const logInUser = (credentials) => async (dispatch) => {
     try {
         dispatch(loginRequest());
 
-        axios.post('')
+        axios.post('', credentials)
             .then(response => {
-                console.log('logInUser action', response)
-                const info = response.data
+                console.log('logInUser action', response);
+                // const info = response.data;
+                sessionStorage.setItem('jwt', response.jwt);
                 dispatch(
-                    loginSuccess(info)
+                    loginSuccess()
                 )
             })
 
