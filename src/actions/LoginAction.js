@@ -1,5 +1,4 @@
-import axiosWithAuth from "../utils/axiosWithAuth"
-
+import axios from "axios";
 
 export const LOGIN_LOADING = "USER_LOGIN_START";
 export const LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
@@ -10,8 +9,9 @@ export const LOGIN_FAILURE = "USER_LOGIN_FAILURE";
 export const authUsersLogin = (patientLogin, props) => dispatch => {
   dispatch({ type: LOGIN_LOADING });
 
-  axiosWithAuth()
-    .post(`/api/auth/login`, patientLogin)
+  axios
+  //we need our base url
+    .post("https://immunazation.herokuapp.com/api/auth/login", patientLogin)
     .then(res => {
       console.log( "In login action-creator", res);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
