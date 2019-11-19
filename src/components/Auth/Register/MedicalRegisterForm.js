@@ -48,8 +48,9 @@ export default function MedicalRegisterForm() {
                   <Grid item xs={12}>
                   <TextField
                       autoComplete="name"
-                      name="name"
+                      name="username"
                       variant="outlined"
+                      value={}
                       required
                       id="name"
                       label="Full Name"
@@ -108,3 +109,12 @@ export default function MedicalRegisterForm() {
         </div>
     );
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    MedRegister:(employeeInfo) => dispatchEvent(MedRegister(employeeInfo))
+  }
+}
+
+
+export default connect(null, mapDispatchToProps)(MedicalRegisterForm)
