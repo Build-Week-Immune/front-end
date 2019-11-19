@@ -9,12 +9,10 @@ import { connect } from "react-redux";
 import Navbar from '../../Bars/Navbar';
 import Footer from '../../Bars/Footer';
 
-import { patientSignUpRequest } from "../../../actions/index"
+import { patientSignUpRequest } from "../../../actions/PatientRegister";
 
 import { Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-
-
 
 /*************************  Start of Patient Registration Form *************************/
 const useStyles = makeStyles(theme => ({
@@ -38,14 +36,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function PatientRegisterForm() {
+function PatientRegisterForm(props) {
   const classes = useStyles();
 
   const [patientRegister, setPatientRegister] = useState({
     //DATA WE NEED FROM PATIENT TO REGISTER
-    patientEmail: "",
-    patientPassword: "",
-    patientFullName: ""
+    password: "",
+    username: "",
+    role: "user"
   });
 
   const handleChange = e => {
@@ -57,7 +55,8 @@ export default function PatientRegisterForm() {
 
   const register = e => {
     e.preventDefault();
-    patientSignUpRequest(patientRegister)
+    console.log(patientRegister);
+    props.patientSignUpRequest(patientRegister, props.history);
   }
 
   return (
@@ -75,24 +74,14 @@ export default function PatientRegisterForm() {
             <Grid item xs={12}>
               <TextField
                 autoComplete="name"
-                name="name"
+                name="username"
                 variant="outlined"
                 onChange={handleChange}
+                value={patientRegister.username}
                 required
                 id="name"
-                label="Full Name"
+                label="username"
                 autoFocus
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                onChange={handleChange}
-                required
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
               />
             </Grid>
             <Grid item xs={12}>
@@ -101,6 +90,7 @@ export default function PatientRegisterForm() {
                 required
                 name="password"
                 onChange={handleChange}
+                value={patientRegister.password}
                 label="Password"
                 type="password"
                 id="password"
@@ -109,6 +99,7 @@ export default function PatientRegisterForm() {
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
+                required 
                 control={<Checkbox value="agreeToTerms" color="primary" />}
                 label="I agree to Terms and Conditions of Immune"
               />
@@ -128,4 +119,21 @@ export default function PatientRegisterForm() {
     </div>
   );
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    patientSignUpRequest:(patientInfo, history) => dispatch(patientSignUpRequest(patientInfo, history))
+  }
+}
+// store
+// mapStateToProps(store)
+// function some(){
+//   return function(pickles) {
+//     console.log(pickles)
+//   }
+// }
+// const myFunct = some()
+// myFunct()
+
+export default connect(null, mapDispatchToProps)(PatientRegisterForm);
+
 /************************* End of Patient Registration Form *************************/

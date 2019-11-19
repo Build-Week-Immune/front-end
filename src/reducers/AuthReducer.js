@@ -9,7 +9,7 @@ const initialState = {
     }
     
     // 1. Patient (same as user) Register Reducer
-    export const AuthReducer = ( state = initialState, action ) => {
+const AuthReducer = ( state = initialState, action ) => {
         switch(action.type) {
             case LOGIN_LOADING:
                 return {
@@ -35,4 +35,4 @@ const initialState = {
         }
     }
 
-    export default AuthReducer;
+export default AuthReducer;
