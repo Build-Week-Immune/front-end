@@ -1,15 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { authUsersLogin } from "../../actions/index";
 import { connect } from "react-redux";
-import axios from 'axios'
 
 import { Paper, Grid, TextField, Button, Typography } from '@material-ui/core';
 
-
-
-
-
-const PatientLogin = () => {
+const PatientLogin = (props) => {
 
     const [patientLogin, setPatientLogin] = useState({
         patientName: "",
