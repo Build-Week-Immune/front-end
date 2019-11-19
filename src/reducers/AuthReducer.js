@@ -1,5 +1,6 @@
 import { LOGIN_LOADING, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/LoginAction';
 
+
 const initialState = {
         patientInfo: [],
         isLoading: false,
@@ -8,7 +9,7 @@ const initialState = {
     }
     
     // 1. Patient (same as user) Register Reducer
-    export const LoginReducer = ( state = initialState, action ) => {
+    export const AuthReducer = ( state = initialState, action ) => {
         switch(action.type) {
             case LOGIN_LOADING:
                 return {
@@ -34,4 +35,4 @@ const initialState = {
         }
     }
 
-    export default LoginReducer;
+    export default AuthReducer;

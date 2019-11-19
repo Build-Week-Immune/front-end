@@ -1,12 +1,8 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import { authUsersLogin } from "../../actions/index";
 import { connect } from "react-redux";
 
-
-import { Paper, Grid, TextField, Button} from '@material-ui/core';
-
-
-
+import { Paper, Grid, TextField, Button, Typography } from '@material-ui/core';
 
 
 const PatientLogin = (props) => {

@@ -1,14 +1,14 @@
-import axiosWithAuth from "../utils/axiosWithAuth";
+import axios from 'axios'
 
-//action types for med register
-export const MED_REGISTER_LOADING = "MED_REGISTER_LOADING";
-export const MED_REGISTER_SUCCESS = "MED_REGISTER_SUCCESS";
-export const MED_REGISTER_FAILURE = "MED_REGISTER_FAILURE";
-
-
-export const authMedRegister = (medProfRegister, props) => dispatch => {
-    dispatch({ type: MED_REGISTER_LOADING });
-
-    axiosWithAuth()
-        .post(`## API MUST GO HERE`, medProfRegister)
-}
+export function MedRegister(employeeInfo){
+    return dispatch => {
+        return axios.post('https://immunazation.herokuapp.com/api/auth/register', employeeInfo)
+        .then( response => {
+            console.log(response.data)
+            localStorage.setItem("Med register user_token", res.data.token);
+            localStorage.setItem("Med register user_id", res.data.id);
+            props.history.push("/patient-dashboard");
+        })
+        .catch(err => console.log(err))
+    }
+};
