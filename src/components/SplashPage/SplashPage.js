@@ -13,7 +13,7 @@ import Navbar from '../Bars/Navbar';
 import Footer from '../Bars/Footer';
 import '../../App.css'
 
-export default function HomePage() {
+export default function SplashPage() {
     return (
         <div>
             <Navbar />

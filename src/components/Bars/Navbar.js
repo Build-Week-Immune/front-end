@@ -33,9 +33,6 @@ export default function Navbar() {
               <Link to="/login">
                 <Button color="inherit" style={{textDecoration: 'none', color: 'white'}}>Login</Button>
               </Link>
-              <Link to="/register">
-                <Button color="inherit">Create Account</Button>
-              </Link>
             </Toolbar>
           </AppBar>
         </div>

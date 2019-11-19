@@ -89,6 +89,7 @@ export default function MedicalRegisterForm() {
                   </Grid>
                   <Grid item xs={12}>
                   <FormControlLabel
+                      required
                       control={<Checkbox value="agreeToTerms" color="primary" />}
                       label="I agree to Terms and Conditions of Immune"
                   />
