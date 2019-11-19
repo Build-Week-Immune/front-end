@@ -5,6 +5,7 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -34,7 +35,7 @@ export default function SimpleBottomNavigation() {
     >
     <BottomNavigationAction icon={<FavoriteIcon color="disabled" />} />
     <Typography variant="h6" className={classes.text}>
-      Immune
+      <Link to="./" style={{textDecoration: 'none', color: 'white'}}>Immune</Link>
     </Typography>
     </BottomNavigation>
   );

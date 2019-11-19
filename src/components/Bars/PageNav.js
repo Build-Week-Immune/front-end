@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -28,7 +29,7 @@ export default function Navbar() {
           <AppBar position="static">
             <Toolbar>
               <Typography variant="h6" className={classes.title}>
-                Immune
+              <Link to="./" style={{textDecoration: 'none', color: 'white'}}>Immune</Link>
               </Typography>
               <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
               <MenuIcon />
