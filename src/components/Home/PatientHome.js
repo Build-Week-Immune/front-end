@@ -43,7 +43,7 @@ export default function PatientHomePage() {
             <Typography variant="h4">
                 Family Members on Account
             </Typography>
-            <Typography variant="p">
+            <Typography variant="h5">
                 Get started by adding yourself and family members to your Immune account.
             </Typography>
             <Link to="/patient_home/:id/add_family">
