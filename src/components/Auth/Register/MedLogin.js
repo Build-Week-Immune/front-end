@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
-import { Button, TextField, makeStyles, Grid, Typography } from '@material-ui/core';
-
-import { authUsersLogin } from "../../../actions/Entry/LoginAction";
+import React, { useState } from "react";
 import { connect } from "react-redux";
+
 import Navbar from '../../Bars/Navbar';
 import LoginBar from "../../Bars/LoginBar";
 import Footer from '../../Bars/Footer';
 
+import { authMedLogin } from "../../../actions/Entry/MedLoginAction";
+
+import { Button, TextField, Grid, makeStyles } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+
+/*************************  Start of Medical Login Form *************************/
 const useStyles = makeStyles(theme => ({
   '@global': {
     body: {
@@ -21,46 +25,46 @@ const useStyles = makeStyles(theme => ({
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(3),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
 }));
 
-
-const PatientLogin = (props) => {
+function MedicalLogin(props) {
   const classes = useStyles();
 
-  const [patientLogin, setPatientLogin] = useState({
+  const [medLogin, setMedLogin] = useState({
+    //DATA WE NEED FROM Medical TO LOGIN
     password: "",
     username: "",
-    role: "user"
+    role: "admin"
   });
 
   const handleChange = e => {
-    setPatientLogin({
-      ...patientLogin,
+    setMedLogin({
+      ...medLogin,
       [e.target.name]: e.target.value
     });
   };
 
-  const login = e => {
+  const doctorLogin = e => {
     e.preventDefault();
-    console.log("login component", patientLogin);
-    props.authUsersLogin(patientLogin, props.history);
-
+    console.log('patientregister', medLogin);
+    props.authMedLogin(medLogin, props.history);
   }
 
   return (
     <div>
       <Navbar />
       <div className={classes.paper}>
+       
         <Typography component="h1" variant="h5">
           Login
         </Typography>
-        <LoginBar />
-        <form onSubmit={login} className={classes.form} noValidate>
+         <LoginBar />
+        <form onSubmit={doctorLogin} className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -68,7 +72,7 @@ const PatientLogin = (props) => {
                 name="username"
                 variant="outlined"
                 onChange={handleChange}
-                value={patientLogin.username}
+                value={medLogin.username}
                 required
                 id="name"
                 label="username"
@@ -81,7 +85,7 @@ const PatientLogin = (props) => {
                 required
                 name="password"
                 onChange={handleChange}
-                value={patientLogin.password}
+                value={medLogin.password}
                 label="Password"
                 type="password"
                 id="password"
@@ -103,12 +107,11 @@ const PatientLogin = (props) => {
     </div>
   );
 }
-
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    authUsersLogin: (patientLogin, history) => dispatch(authUsersLogin(patientLogin, history))
+    authMedLogin: (medLogin, history) => dispatch(authMedLogin(medLogin, history))
   }
 }
 
-export default connect(null, mapDispatchToProps)(PatientLogin)
+
+export default connect(null, mapDispatchToProps)(MedicalLogin);
