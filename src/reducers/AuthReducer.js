@@ -5,6 +5,7 @@ const initialState = {
         patientInfo: [],
         isLoading: false,
         error: "",
+        id: "",
         isAuth: localStorage.getItem('token') ? true : false
     }
     
@@ -22,7 +23,8 @@ const AuthReducer = ( state = initialState, action ) => {
                     ...state,
                     patientInfo: action.payload,
                     isLoading: false,
-                    error: ""
+                    error: "",
+                    id: action.payload
                 }
             case LOGIN_FAILURE:
                 return {
