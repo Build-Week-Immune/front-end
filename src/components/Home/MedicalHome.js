@@ -11,8 +11,8 @@
 import React from 'react';
 import styled from "styled-components";
 
-import PageNav from '../../Bars/PageNav';
-import Footer from '../../Bars/Footer';
+import PageNav from '../Bars/PageNav';
+import Footer from '../Bars/Footer';
 
 export default function MedicalHomePage() {
     return (
@@ -21,6 +21,7 @@ export default function MedicalHomePage() {
             <TextContainer className='bgrnd' >
                 <p>FYA ... is for Friendly Yelling</p>
                 <p>Placeholding page for now.</p>
+                <Link to=""><Button>Add Family Member</Button></Link>
             </TextContainer>
             <Footer />
         </div>

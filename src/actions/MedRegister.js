@@ -8,7 +8,7 @@ export function MedRegister(employeeInfo, history){
             console.log(res.data)
             localStorage.setItem("Med register user_token", res.data.token);
             localStorage.setItem("Med register user_id", res.data.id);
-             history.push("/");
+             history.push("/medical_home");
         })
         .catch(err => console.log(err))
     }
