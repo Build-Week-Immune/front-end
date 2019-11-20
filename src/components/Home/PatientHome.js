@@ -9,7 +9,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PageNav from '../Bars/PageNav';
 import Footer from '../Bars/Footer';
-import { Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles, Typography, Paper } from '@material-ui/core';
+import { Button, makeStyles, Typography, Paper } from '@material-ui/core';
 
 /*************************  Start of Patient Home Styles *************************/
 const useStyles = makeStyles(theme => ({

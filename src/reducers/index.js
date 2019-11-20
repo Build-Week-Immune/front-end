@@ -1,8 +1,129 @@
-import AuthReducer from './AuthReducer';
-import MedAuthReducer from './MedAuthReducer';
-import PatientRegisterReducer from './PatientRegisterReducer';
-import GetFamReducer from './GetFamReducer';
+import { 
+    LOGIN_LOADING, 
+    LOGIN_SUCCESS, 
+    LOGIN_FAILURE 
+} from '../actions/Entry/LoginAction';
 
-import { combineReducers } from 'redux';
+import { 
+    MED_LOGIN_LOADING, 
+    MED_LOGIN_SUCCESS, 
+    MED_LOGIN_FAILURE 
+} from '../actions/Entry/MedLoginAction';
 
-export const rootReducer = combineReducers(AuthReducer,MedAuthReducer, PatientRegisterReducer, GetFamReducer, )
+import { 
+    PATIENT_REGISTER_LOADING, 
+    PATIENT_REGISTER_SUCCESS, 
+    PATIENT_REGISTER_FAIL 
+} from '../actions/Entry/PatientRegister';
+
+import { 
+    GET_FAMILY_INFO_START, 
+    GET_FAMILY_INFO_SUCCESS, 
+    GET_FAMILY_INFO_FAILURE 
+} from "../actions/Patients/getFamilyMemberInfo";
+
+const initialState = {
+        patientInfo: [],
+        MedInfo: [],
+        isLoading: false,
+        error: "",
+        id: "",
+        isAuth: localStorage.getItem('token') ? true : false
+    }
+    
+    // 1. Patient (same as user) Register Reducer
+export const reducer = ( state = initialState, action ) => {
+        switch(action.type) {
+
+// Patient Login Cases---------------------------------
+            case LOGIN_LOADING:
+                return {
+                    ...state,
+                    isLoading: true,
+                    error: ""
+                }
+            case LOGIN_SUCCESS:
+                return {
+                    ...state,
+                    patientInfo: action.payload,
+                    isLoading: false,
+                    error: "",
+                    id: action.payload
+                }
+            case LOGIN_FAILURE:
+                return {
+                    ...state,
+                    error: action.payload,
+                    isLoading: false
+                }
+
+// Medical Login Cases-------------------------------
+                case MED_LOGIN_LOADING:
+                return {
+                    ...state,
+                    isLoading: true,
+                    error: ""
+                }
+            case MED_LOGIN_SUCCESS:
+                return {
+                    ...state,
+                    MedInfo: action.payload,
+                    isLoading: false,
+                    error: "",
+                    id: action.payload
+                }
+            case MED_LOGIN_FAILURE:
+                return {
+                    ...state,
+                    error: action.payload,
+                    isLoading: false
+                }
+// Patient Registeration------------------------------
+                case PATIENT_REGISTER_LOADING:
+                return {
+                    ...state,
+                    isLoading: true,
+                    error: ""
+                }
+            case PATIENT_REGISTER_SUCCESS:
+                return {
+                    ...state,
+                    patientInfo: action.payload,
+                    isLoading: false,
+                    error: "",
+                    id: action.payload
+                }
+            case PATIENT_REGISTER_FAIL:
+                return {
+                    ...state,
+                    error: action.payload,
+                    isLoading: false
+                }
+
+// Get Family Information---------------------------------
+                case GET_FAMILY_INFO_START:
+                    return{
+                        ...state,
+                        isLoading: true,
+                        error: ""
+                    }
+                case GET_FAMILY_INFO_SUCCESS:
+                    return{
+                        ...state,
+                        getFamilyMemberInfo: action.payload,
+                        isLoading: false,
+                        error: ""
+                    }
+                case GET_FAMILY_INFO_FAILURE:
+                    return{
+                        ...state,
+                        error: action.payload,
+                        isLoading: false
+                    }
+
+            default:
+                return state;
+        }
+    }
+
+// export default reducer;

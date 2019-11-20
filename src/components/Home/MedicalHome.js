@@ -10,8 +10,8 @@
 
 import React from 'react';
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
-import { Button } from '@material-ui/core';
+// import { Link } from 'react-router-dom';
+// import { Button } from '@material-ui/core';
 
 import PageNav from '../Bars/PageNav';
 import Footer from '../Bars/Footer';
