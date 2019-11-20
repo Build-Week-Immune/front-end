@@ -17,7 +17,8 @@ export const authUsersLogin = (patientLogin, history) => dispatch => {
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
       localStorage.setItem("user_token", res.data.token);
       localStorage.setItem("user_id", res.data.id);
-      history.push("/patient_home");
+      // Jonathan modified the next line by adding user_id after /patient_home/
+      history.push(`/patient_home/${res.data.id}`);
     })
     .catch(err => {
       console.log(
