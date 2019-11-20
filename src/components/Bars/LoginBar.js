@@ -12,4 +12,4 @@ const LoginBar = () => {
     )
 }
 
-export default LoginBar
+export default LoginBar;
