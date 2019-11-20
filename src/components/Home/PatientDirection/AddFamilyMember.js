@@ -116,15 +116,16 @@ export default function AddFamilyMember() {
                     </Paper>
                   </Grid>
               </Grid>
-              <Link to="/patient_home/:id/show_family_member">
+              {/* <Link to="/patient_home/:id/show_family_member"> */}
                 <Button
+                type="submit"
                     variant="contained"
                     color="primary"
                     className={classes.submit}
                 >
                     Add Family Member
                 </Button>
-              </Link>
+              {/* </Link> */}
               <Link to="/patient_home/:id">
                 <Button
                     variant="contained"
