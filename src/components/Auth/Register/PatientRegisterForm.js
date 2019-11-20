@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import Navbar from '../../Bars/Navbar';
 import Footer from '../../Bars/Footer';
 
-import { patientSignUpRequest } from "../../../actions/PatientRegister";
+import { patientSignUpRequest } from "../../../actions/Entry/PatientRegister";
 
 import { Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
@@ -55,7 +55,7 @@ function PatientRegisterForm(props) {
 
   const register = e => {
     e.preventDefault();
-    console.log('patientregister',patientRegister);
+    console.log('patientregister', patientRegister);
     props.patientSignUpRequest(patientRegister, props.history);
   }
 
@@ -99,7 +99,7 @@ function PatientRegisterForm(props) {
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
-                required 
+                required
                 control={<Checkbox value="agreeToTerms" color="primary" />}
                 label="I agree to Terms and Conditions of Immune"
               />
@@ -121,7 +121,7 @@ function PatientRegisterForm(props) {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    patientSignUpRequest:(patientInfo, history) => dispatch(patientSignUpRequest(patientInfo, history))
+    patientSignUpRequest: (patientInfo, history) => dispatch(patientSignUpRequest(patientInfo, history))
   }
 }
 

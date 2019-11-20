@@ -7,8 +7,8 @@ import React from 'react';
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
 
-import Navbar from '../../Bars/Navbar';
-import Footer from '../../Bars/Footer';
+import Navbar from '../Bars/Navbar';
+import Footer from '../Bars/Footer';
 
 export default function HomeRegister() {
     return (

@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {Button, TextField, makeStyles, Grid, Paper} from '@material-ui/core';
 //import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { authUsersLogin } from "../../actions/index";
+import { authUsersLogin } from "../../../actions/Entry/LoginAction";
 import { connect } from "react-redux";
-import Navbar from '../Bars/Navbar';
-import Footer from '../Bars/Footer';
+import Navbar from '../../Bars/Navbar';
+import Footer from '../../Bars/Footer';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
