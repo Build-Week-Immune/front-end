@@ -124,15 +124,7 @@ const mapDispatchToProps = (dispatch) => {
     patientSignUpRequest:(patientInfo, history) => dispatch(patientSignUpRequest(patientInfo, history))
   }
 }
-// store
-// mapStateToProps(store)
-// function some(){
-//   return function(pickles) {
-//     console.log(pickles)
-//   }
-// }
-// const myFunct = some()
-// myFunct()
+
 
 export default connect(null, mapDispatchToProps)(PatientRegisterForm);
 
