@@ -1,6 +1,6 @@
 import axiosWithAuth from '../../utils/axiosWithAuth';
 
-export const addFamilyMember = (FamMemberData, history) => {
+export const addTribe = (FamMemberData, history) => {
     return dispatch => {
         console.log('test_inAdd_Family')
         const authAxios = axiosWithAuth();
