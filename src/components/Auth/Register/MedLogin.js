@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Navbar from '../../Bars/Navbar';
 import Footer from '../../Bars/Footer';
 
-import { authMedLogin } from "../../../actions/Entry/PatientRegister";
+import { authMedLogin } from "../../../actions/Entry/MedLoginAction";
 
 import { Button, TextField, Grid, makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
@@ -48,7 +48,7 @@ function MedicalLogin(props) {
     });
   };
 
-  const medLogin = e => {
+  const doctorLogin = e => {
     e.preventDefault();
     console.log('patientregister', medLogin);
     props.authMedLogin(medLogin, props.history);
@@ -61,7 +61,7 @@ function MedicalLogin(props) {
         <Typography component="h1" variant="h5">
           Login
             </Typography>
-        <form onSubmit={medLogin} className={classes.form} noValidate>
+        <form onSubmit={doctorLogin} className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -106,7 +106,7 @@ function MedicalLogin(props) {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    authMedLogin: (medInfo, history) => dispatch(authMedLogin(medInfo, history))
+    authMedLogin: (medLogin, history) => dispatch(authMedLogin(medLogin, history))
   }
 }
 
