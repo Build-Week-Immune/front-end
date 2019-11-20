@@ -37,19 +37,19 @@ function MedicalRegisterForm(props) {
 
   const classes = useStyles();
 
-  const [medicalRegister, setMedicalRegister] = useState({
-    //DATA WE NEED FROM MEDICAL PROFESSIONAL TO REGISTER
-    password: "",
-    username: "",
-    role: "admin"
-  });
-
-  const handleChange = e => {
-    setMedicalRegister({
-      ...medicalRegister,
-      [e.target.name]: e.target.value
+    const [medicalRegister, setMedicalRegister] = useState({
+      //DATA WE NEED FROM MEDICAL PROFESSIONAL TO REGISTER
+      password: "",
+      username: "",
+      role: "admin"
     });
-  };
+ 
+    const handleChange = e => {
+      setMedicalRegister({
+        ...medicalRegister,
+        [e.target.name]: e.target.value
+      });
+    };
 
   const register = e => {
     e.preventDefault();
