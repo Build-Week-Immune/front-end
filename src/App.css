@@ -26,28 +26,29 @@
     background-size: cover;
     background-image: url('./components/SplashPage/image/homepage.jpg')
 }
-.navbar {
+.loginBar {
   align-items: center;
   /* border-bottom: 3px solid rgb(221, 221, 221); */
-  /* background: #8a2be2; */
+  /* background: blue; */
   display: flex;
   /* height: 70px; */
   justify-content: space-around;
-  padding: 0 3%;
+  padding: 1%;
   width: 100%;
-  -webkit-box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
+  /* -webkit-box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
   -moz-box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
-  box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
+  box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42); */
 }
 
 .navLink {
-  font-size: 2rem;
+  font-size: 1rem;
   text-decoration: none;
   color: blue;
+  background-color: white;
 }
-.navbar > a.activeNavButton {
-  /* background-color: #9a99dd; */
-  color: grey;
+.loginBar > a.activeNavButton {
+  background-color: blue;
+  color: white;
   padding: 1%;
   text-align: center;
   border-radius: 8px;

@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
-import {Button, TextField, makeStyles, Grid, Paper} from '@material-ui/core';
+import React, { useState } from 'react';
+import { Button, TextField, makeStyles, Grid, Typography, Paper } from '@material-ui/core';
 //import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { authUsersLogin } from "../../../actions/Entry/LoginAction";
 import { connect } from "react-redux";
 import Navbar from '../../Bars/Navbar';
+import LoginBar from "../../Bars/LoginBar";
 import Footer from '../../Bars/Footer';
 
 const useStyles = makeStyles(theme => ({
@@ -29,70 +30,85 @@ const useStyles = makeStyles(theme => ({
 
 
 const PatientLogin = (props) => {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    const [patientLogin, setPatientLogin] = useState({
-      password: "",
-      username: "",
-      role: "user"
+  const [patientLogin, setPatientLogin] = useState({
+    password: "",
+    username: "",
+    role: "user"
+  });
+
+  const handleChange = e => {
+    setPatientLogin({
+      ...patientLogin,
+      [e.target.name]: e.target.value
     });
+  };
 
-    const handleChange = e => {
-        setPatientLogin({
-            ...patientLogin,
-            [e.target.name]: e.target.value
-        });
-    };
+  const login = e => {
+    e.preventDefault();
+    console.log("login component", patientLogin);
+    props.authUsersLogin(patientLogin, props.history);
 
-    const login = e => {
-        e.preventDefault();
-        console.log("login component", patientLogin);
-        props.authUsersLogin(patientLogin, props.history);
-        
-    }
+  }
 
-    return (
-        <div>
-          <Navbar />
-          <Grid container >
-            <Paper className={classes.paper}>
-              <form onSubmit={login} className={classes.form}>
-                
-                <TextField
-                  id="outlined-basic"
-                  label="username"
-                  name="username"
-                  margin="normal"
-                  variant="outlined"
-                  value={patientLogin.username}
-                  onChange={handleChange}
-                  required
-                />
-                <TextField
-                  // type="password" 
-                  id="outlined-basic"
-                  label="password"
-                  name="password"
-                  margin="normal"
-                  variant="outlined"
-                  value={patientLogin.password}
-                  onChange={handleChange}
-                  required
-                />
-                <Button type="submit" className={classes.submit}>Submit</Button>
-              </form>
-            </Paper>
-          </Grid> 
-          <Footer />
-        </div>
+  return (
+    <div>
+      <Navbar />
+      <div className={classes.paper}>
+        <Typography component="h1" variant="h5">
+          Login
+        </Typography>
+        <LoginBar />
+        <form onSubmit={login} className={classes.form} noValidate>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                autoComplete="name"
+                name="username"
+                variant="outlined"
+                onChange={handleChange}
+                value={patientLogin.username}
+                required
+                id="name"
+                label="username"
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                name="password"
+                onChange={handleChange}
+                value={patientLogin.password}
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Login
+              </Button>
+        </form>
+      </div>
+      <Footer />
+    </div>
   );
 }
 
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        authUsersLogin: (patientLogin, history) => dispatch(authUsersLogin(patientLogin, history))
-    }
+  return {
+    authUsersLogin: (patientLogin, history) => dispatch(authUsersLogin(patientLogin, history))
+  }
 }
 
 export default connect(null, mapDispatchToProps)(PatientLogin)

@@ -10,7 +10,7 @@ export const authMedLogin = (medLogin, history) => dispatch => {
   dispatch({ type: MED_LOGIN_LOADING });
 
   axios
-  //we need our base url
+ 
     .post("https://immunazation.herokuapp.com/api/auth/login", medLogin)
     .then(res => {
       console.log( "In login action-creator", res);

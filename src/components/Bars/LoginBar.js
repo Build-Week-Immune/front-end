@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 
 import "../../App.css";
 
-export const LoginBar = () => {
+const LoginBar = () => {
     return (
         <div className="loginBar">
             <NavLink exact to='/login' activeClassName="activeNavButton" className="navLink" >Patient</NavLink>
@@ -11,3 +11,5 @@ export const LoginBar = () => {
         </div>
     )
 }
+
+export default LoginBar

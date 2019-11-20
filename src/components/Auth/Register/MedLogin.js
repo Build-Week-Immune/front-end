@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import Navbar from '../../Bars/Navbar';
+import LoginBar from "../../Bars/LoginBar";
 import Footer from '../../Bars/Footer';
 
 import { authMedLogin } from "../../../actions/Entry/MedLoginAction";
@@ -58,9 +59,11 @@ function MedicalLogin(props) {
     <div>
       <Navbar />
       <div className={classes.paper}>
+       
         <Typography component="h1" variant="h5">
           Login
-            </Typography>
+        </Typography>
+         <LoginBar />
         <form onSubmit={doctorLogin} className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -96,7 +99,7 @@ function MedicalLogin(props) {
             color="primary"
             className={classes.submit}
           >
-            Complete Account Creation
+            Login
               </Button>
         </form>
       </div>
