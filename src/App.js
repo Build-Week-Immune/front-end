@@ -6,6 +6,8 @@ import PatientLogin from './components/Auth/PatientLogin';
 import HomeRegister from './components/Auth/Register/HomeRegister';
 import MedicalRegisterForm from './components/Auth/Register/MedicalRegisterForm';
 import PatientRegisterForm from './components/Auth/Register/PatientRegisterForm';
+
+
 import './App.css';
 
 function App(props) {

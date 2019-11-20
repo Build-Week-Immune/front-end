@@ -7,6 +7,8 @@ import React from 'react';
 import Navbar from '../../Bars/Navbar';
 import Footer from '../../Bars/Footer';
 
+// import { connect } from "react-redux";
+
 import {Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
@@ -31,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
-export default function MedicalRegisterForm() {
+function MedicalRegisterForm() {
     const classes = useStyles();
     return (
         <div>
@@ -50,7 +52,6 @@ export default function MedicalRegisterForm() {
                       autoComplete="name"
                       name="username"
                       variant="outlined"
-                      value={}
                       required
                       id="name"
                       label="Full Name"
@@ -111,11 +112,12 @@ export default function MedicalRegisterForm() {
     );
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    MedRegister:(employeeInfo) => dispatchEvent(MedRegister(employeeInfo))
-  }
-}
+export default 
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     MedRegister:(employeeInfo) => dispatchEvent(MedRegister(employeeInfo))
+//   }
+// }
 
 
-export default connect(null, mapDispatchToProps)(MedicalRegisterForm)
+// export default connect(null, mapDispatchToProps)(MedicalRegisterForm)
