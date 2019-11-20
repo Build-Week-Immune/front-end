@@ -31,7 +31,7 @@ const CardContainer = styled.div`
   filter: drop-shadow(0.1rem 0.1rem 0.25rem darkslategray);
   h3 {
       font-size: 24px;
-      textDecoration: none;
+      text-decoration: none;
   }
 `;
 
