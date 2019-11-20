@@ -32,7 +32,9 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
+
     function MedicalRegisterForm(props) {
+
     const classes = useStyles();
 
     const [medicalRegister, setMedicalRegister] = useState({
@@ -137,6 +139,7 @@ const useStyles = makeStyles(theme => ({
     );
 }
 
+
 const mapDispatchToProps = (dispatch) => {
   return {
     MedRegister:(employeeInfo, history) => dispatch(MedRegister(employeeInfo, history))
@@ -144,4 +147,5 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(null, mapDispatchToProps)(MedicalRegisterForm)
+
+// export default connect(null, mapDispatchToProps)(MedicalRegisterForm)
