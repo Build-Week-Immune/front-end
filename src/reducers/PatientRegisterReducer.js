@@ -1,32 +1,36 @@
-import { MED_LOGIN_LOADING, MED_LOGIN_SUCCESS, MED_LOGIN_FAILURE } from '../actions/Entry/MedLoginAction';
+import { 
+    PATIENT_REGISTER_LOADING, 
+    PATIENT_REGISTER_SUCCESS, 
+    PATIENT_REGISTER_FAIL 
+} from '../actions/Entry/PatientRegister';
 
 
 const initialState = {
-        MedInfo: [],
+        patientInfo: [],
         isLoading: false,
         error: "",
-        id: "", 
+        id: "",
         isAuth: localStorage.getItem('token') ? true : false
     }
     
     // 1. Patient (same as user) Register Reducer
-const MedAuthReducer = ( state = initialState, action ) => {
+const AuthReducer = ( state = initialState, action ) => {
         switch(action.type) {
-            case MED_LOGIN_LOADING:
+            case PATIENT_REGISTER_LOADING:
                 return {
                     ...state,
                     isLoading: true,
                     error: ""
                 }
-            case MED_LOGIN_SUCCESS:
+            case PATIENT_REGISTER_SUCCESS:
                 return {
                     ...state,
-                    MedInfo: action.payload,
+                    patientInfo: action.payload,
                     isLoading: false,
                     error: "",
                     id: action.payload
                 }
-            case MED_LOGIN_FAILURE:
+            case PATIENT_REGISTER_FAIL:
                 return {
                     ...state,
                     error: action.payload,
@@ -37,4 +41,4 @@ const MedAuthReducer = ( state = initialState, action ) => {
         }
     }
 
-export default MedAuthReducer;
+export default AuthReducer;
