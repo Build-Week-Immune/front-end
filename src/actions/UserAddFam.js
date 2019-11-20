@@ -1,4 +1,4 @@
-import axiosWithAuth from "../../utils/axiosWithAuth";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 // ADD PATIENT FROM USER ACCOUNT (POST) (USER ACCESS ONLY)
 export const ADD_NEW_FAMILY_START = "ADD_NEW_FAMILY_START";
