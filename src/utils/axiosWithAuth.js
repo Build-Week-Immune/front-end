@@ -1,3 +1,4 @@
+//checks to make sure we have our token
 import axios from "axios"
 
 const axiosWithAuth = () => {

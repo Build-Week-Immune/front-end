@@ -13,7 +13,7 @@ export const authUsersLogin = (patientLogin, history) => dispatch => {
   //we need our base url
     .post("https://immunazation.herokuapp.com/api/auth/login", patientLogin)
     .then(res => {
-      console.log( "In login action-creator", res);
+      console.log( "In login action-creator", res.data);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
       localStorage.setItem("user_token", res.data.token);
       localStorage.setItem("user_id", res.data.id);

@@ -4,4 +4,6 @@ import GetFamReducer from './GetFamReducer';
 
 import { combineReducers } from 'redux';
 
-export const rootReducer = combineReducers(AuthReducer, GetFamReducer, MedAuthReducer)
+export const rootReducer = combineReducers({AuthReducer, GetFamReducer, MedAuthReducer})
+
+

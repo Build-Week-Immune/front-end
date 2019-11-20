@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 export function patientSignUpRequest( patientInfo, history) {
     return dispatch => {
         console.log('test')
