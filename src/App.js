@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import PrivateRoute from './utils/PrivateRoute';
 
 import SplashPage from './components/SplashPage/SplashPage';
+import MedicalList from './components/Home/MedicalDirectionJonathan/MedicalList';
 import PatientLogin from './components/Auth/Register/PatientLogin';
 import MedicalLogin from './components/Auth/Register/MedLogin'
 import HomeRegister from './components/Auth/Register/HomeRegister';
@@ -25,7 +26,11 @@ function App() {
       <Route path="/register" exact component={HomeRegister} />
       <Route path="/register/medical" component={MedicalRegisterForm} />
       <Route path="/register/patient" component={PatientRegisterForm} />
-      <PrivateRoute path="/medical_home" component={MedicalHome} />
+
+      {/* The next line is Jonathan's path*/}
+      <PrivateRoute path="/medical_home" exact component={MedicalHome} />
+
+      <Route path="/medical_home/jonathan" component={MedicalList} />
       <PrivateRoute path="/patient_home/:id" exact component={PatientHome} />
       <PrivateRoute path="/patient_home/:id/add_family" component={AddFamilyMember} />
       <PrivateRoute path="/patient_home/:id/show_family_member" component={ShowFamilyMember} />
