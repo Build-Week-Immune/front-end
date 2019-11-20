@@ -8,8 +8,8 @@
 import React from 'react';
 import styled from "styled-components";
 
-import PageNav from '../../Bars/PageNav';
-import Footer from '../../Bars/Footer';
+import PageNav from '../Bars/PageNav';
+import Footer from '../Bars/Footer';
 
 export default function PatientHomePage() {
     return (

@@ -8,7 +8,7 @@ export function patientSignUpRequest( patientInfo, history) {
             console.log(res.data)
             localStorage.setItem("Patient register user token", res.data.token);
             localStorage.setItem("Patient register user id", res.data.id);
-            history.push("/");
+            history.push("/patient_home");
         })
         .catch(err => console.log(err))
     }
