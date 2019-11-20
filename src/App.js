@@ -10,8 +10,9 @@ import MedicalRegisterForm from './components/Auth/Register/MedicalRegisterForm'
 import PatientRegisterForm from './components/Auth/Register/PatientRegisterForm';
 import MedicalHome from './components/Home/MedicalHome';
 import PatientHome from './components/Home/PatientHome';
-
-
+import AddFamilyMember from './components/Home/PatientDirection/AddFamilyMember';
+import ShowFamilyMember from './components/Home/PatientDirection/ShowFamilyMember';
+import DisplayFamilyImmu from './components/Home/PatientDirection/DisplayFamilyImmu';
 import './App.css';
 
 function App() {
@@ -23,7 +24,10 @@ function App() {
       <Route path="/register/medical" component={MedicalRegisterForm} />
       <Route path="/register/patient" component={PatientRegisterForm} />
       <PrivateRoute path="/medical_home" component={MedicalHome} />
-      <PrivateRoute path="/patient_home" component={PatientHome} />
+      <PrivateRoute path="/patient_home/:id" exact component={PatientHome} />
+      <PrivateRoute path="/patient_home/:id/add_family" component={AddFamilyMember} />
+      <PrivateRoute path="/patient_home/:id/show_family_member" component={ShowFamilyMember} />
+      <PrivateRoute path="/patient_home/:id/display_family_immu" component={DisplayFamilyImmu} />
     </main>
   );
 }

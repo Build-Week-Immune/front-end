@@ -16,7 +16,7 @@ export default function HomeRegister() {
             <Navbar />
             <TextContainer className='bgrnd' >
                 <p>Thanks for choosing Immune! </p>
-                <p>Create an account by choosing your role.</p>
+                <p>Choose your role to register.</p>
                 <Link to="/register/patient">
                     <Button>Patient</Button>
                 </Link>

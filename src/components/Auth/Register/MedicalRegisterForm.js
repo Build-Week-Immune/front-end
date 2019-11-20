@@ -118,11 +118,11 @@ const useStyles = makeStyles(theme => ({
                   />
                   </Grid>
                   <Grid item xs={12}>
-                  <FormControlLabel
-                      required
-                      control={<Checkbox value="agreeToTerms" color="primary" />}
-                      label="I agree to Terms and Conditions of Immune"
-                  />
+                    <FormControlLabel
+                        required
+                        control={<Checkbox value="agreeToTerms" color="primary" />}
+                        label="I agree to Terms and Conditions of Immune"
+                    />
                   </Grid>
               </Grid>
               <Button
