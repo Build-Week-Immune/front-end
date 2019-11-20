@@ -55,7 +55,7 @@ function PatientRegisterForm(props) {
 
   const register = e => {
     e.preventDefault();
-    console.log(patientRegister);
+    console.log('patientregister',patientRegister);
     props.patientSignUpRequest(patientRegister, props.history);
   }
 

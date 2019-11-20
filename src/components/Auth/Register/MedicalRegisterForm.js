@@ -32,7 +32,9 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
+
     function MedicalRegisterForm(props) {
+
     const classes = useStyles();
 
     const [medicalRegister, setMedicalRegister] = useState({
@@ -46,13 +48,13 @@ const useStyles = makeStyles(theme => ({
       setMedicalRegister({
         ...medicalRegister,
         [e.target.name]: e.target.value
-      })
-    }
+      });
+    };
 
     const register = e => {
       e.preventDefault();
-      console.log(medicalRegister);
-      props.medicalSignUpRequest(medicalRegister, props.history);
+      console.log('medregister',medicalRegister);
+      props.MedRegister(medicalRegister, props.history);
     }
 
 
@@ -70,13 +72,14 @@ const useStyles = makeStyles(theme => ({
               <Grid container spacing={2}>
                   <Grid item xs={12}>
                   <TextField
-                      autoComplete="name"
+                      autoComplete="username"
                       name="username"
                       variant="outlined"
+                      onChange={handleChange}
                       value={medicalRegister.username}
                       required
                       id="name"
-                      label="Full Name"
+                      label="username"
                       autoFocus
                   />
                   </Grid>
@@ -142,5 +145,7 @@ const mapDispatchToProps = (dispatch) => {
     MedRegister:(employeeInfo, history) => dispatch(MedRegister(employeeInfo, history))
   }
 }
+
+
 
 export default connect(null, mapDispatchToProps)(MedicalRegisterForm)
