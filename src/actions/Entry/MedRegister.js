@@ -8,7 +8,8 @@ export function MedRegister(employeeInfo, history){
             console.log(res.data)
             localStorage.setItem("Med register user_token", res.data.token);
             localStorage.setItem("Med register user_id", res.data.id);
-             history.push("/medical_home");
+             // Jonathan modified the next line by adding res.data.id after /patient_home/
+             history.push(`/medical_home/${res.data.id}`);
         })
         .catch(err => console.log(err))
     }

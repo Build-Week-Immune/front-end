@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
       },
 }));
 
-export default function Navbar() {
+export default function PageNav() {
     const classes = useStyles();
 
     return (
@@ -29,7 +29,7 @@ export default function Navbar() {
           <AppBar position="static">
             <Toolbar>
               <Typography variant="h6" className={classes.title}>
-              <Link to="./" style={{textDecoration: 'none', color: 'white'}}>Immune</Link>
+              <Link to="/patient_home/:id/display_family_immu" style={{textDecoration: 'none', color: 'white'}}>Immune</Link>
               </Typography>
               <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
               <MenuIcon />

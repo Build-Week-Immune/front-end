@@ -104,34 +104,34 @@ function MedicalRegisterForm(props) {
                       autoComplete="email"
                   />
                   </Grid> */}
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                value={medicalRegister.password}
-                onChange={handleChange}
-                required
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                required
-                control={<Checkbox value="agreeToTerms" color="primary" />}
-                label="I agree to Terms and Conditions of Immune"
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Complete Account Creation
+                  <Grid item xs={12}>
+                  <TextField
+                      variant="outlined"
+                      value={medicalRegister.password}
+                      onChange={handleChange}
+                      required
+                      name="password"
+                      label="Password"
+                      type="password"
+                      id="password"
+                      autoComplete="current-password"
+                  />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <FormControlLabel
+                        required
+                        control={<Checkbox value="agreeToTerms" color="primary" />}
+                        label="I agree to Terms and Conditions of Immune"
+                    />
+                  </Grid>
+              </Grid>
+              <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+              >
+                  Complete Account Creation
               </Button>
         </form>
       </div>

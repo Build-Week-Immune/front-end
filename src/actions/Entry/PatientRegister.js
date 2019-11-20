@@ -8,7 +8,8 @@ export function patientSignUpRequest( patientInfo, history) {
             console.log(res.data)
             localStorage.setItem("Patient register user token", res.data.token);
             localStorage.setItem("Patient register user id", res.data.id);
-            history.push("/patient_home");
+            // Jonathan modified the next line by adding res.data.id after /patient_home/
+            history.push(`/patient_home/${res.data.id}`);
         })
         .catch(err => console.log(err))
     }
