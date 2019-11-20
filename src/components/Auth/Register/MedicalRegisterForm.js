@@ -3,10 +3,11 @@
 
 // Redirects to: '../Auth/Login.js'
 
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from "react-redux";
 import Navbar from '../../Bars/Navbar';
 import Footer from '../../Bars/Footer';
-
+import { MedRegister } from '../../../actions/MedRegister';
 import {Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
@@ -31,8 +32,30 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
-export default function MedicalRegisterForm() {
+    function MedicalRegisterForm(props) {
     const classes = useStyles();
+
+    const [medicalRegister, setMedicalRegister] = useState({
+      //DATA WE NEED FROM MEDICAL PROFESSIONAL TO REGISTER
+      password: "",
+      username: "",
+      role: "admin"
+    });
+
+    const handleChange = e => {
+      setMedicalRegister({
+        ...medicalRegister,
+        [e.target.name]: e.target.value
+      })
+    }
+
+    const register = e => {
+      e.preventDefault();
+      console.log(medicalRegister);
+      props.medicalSignUpRequest(medicalRegister, props.history);
+    }
+
+
     return (
         <div>
         <Navbar />
@@ -43,31 +66,32 @@ export default function MedicalRegisterForm() {
             <Typography component="h1" variant="h5">
               Let's create your account.
             </Typography>
-            <form className={classes.form} noValidate>
+            <form onSubmit={register} className={classes.form} noValidate>
               <Grid container spacing={2}>
                   <Grid item xs={12}>
                   <TextField
                       autoComplete="name"
                       name="username"
                       variant="outlined"
-                      value={}
+                      value={medicalRegister.username}
                       required
                       id="name"
                       label="Full Name"
                       autoFocus
                   />
                   </Grid>
-                  <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                   <TextField
                       name="workplace"
                       variant="outlined"
+                      
                       required
                       id="workplace"
                       label="Medical Institution"
                       autoFocus
                   />
-                  </Grid>
-                  <Grid item xs={12}>
+                  </Grid> */}
+                  {/* <Grid item xs={12}>
                   <TextField
                       variant="outlined"
                       required
@@ -76,10 +100,12 @@ export default function MedicalRegisterForm() {
                       name="email"
                       autoComplete="email"
                   />
-                  </Grid>
+                  </Grid> */}
                   <Grid item xs={12}>
                   <TextField
                       variant="outlined"
+                      value={medicalRegister.password}
+                      onChange={handleChange}
                       required
                       name="password"
                       label="Password"
@@ -113,7 +139,7 @@ export default function MedicalRegisterForm() {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    MedRegister:(employeeInfo) => dispatchEvent(MedRegister(employeeInfo))
+    MedRegister:(employeeInfo, history) => dispatch(MedRegister(employeeInfo, history))
   }
 }
 
