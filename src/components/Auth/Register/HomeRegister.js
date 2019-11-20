@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../../Bars/Navbar';
 import Footer from '../../Bars/Footer';
 
-export default function HomePage() {
+export default function HomeRegister() {
     return (
         <div>
             <Navbar />
