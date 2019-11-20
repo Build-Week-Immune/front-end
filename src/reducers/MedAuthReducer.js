@@ -1,8 +1,8 @@
-import { LOGIN_LOADING, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/Entry/LoginAction';
+import { MED_LOGIN_LOADING, MED_LOGIN_SUCCESS, MED_LOGIN_FAILURE } from '../actions/Entry/MedLoginAction';
 
 
 const initialState = {
-        patientInfo: [],
+        MedInfo: [],
         isLoading: false,
         error: "",
         isAuth: localStorage.getItem('token') ? true : false
@@ -11,20 +11,20 @@ const initialState = {
     // 1. Patient (same as user) Register Reducer
 const AuthReducer = ( state = initialState, action ) => {
         switch(action.type) {
-            case LOGIN_LOADING:
+            case MED_LOGIN_LOADING:
                 return {
                     ...state,
                     isLoading: true,
                     error: ""
                 }
-            case LOGIN_SUCCESS:
+            case MED_LOGIN_SUCCESS:
                 return {
                     ...state,
-                    patientInfo: action.payload,
+                    MedInfo: action.payload,
                     isLoading: false,
                     error: ""
                 }
-            case LOGIN_FAILURE:
+            case MED_LOGIN_FAILURE:
                 return {
                     ...state,
                     error: action.payload,

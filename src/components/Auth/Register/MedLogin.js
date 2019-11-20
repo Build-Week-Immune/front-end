@@ -1,20 +1,16 @@
-// This page contains a form for new patient to register
-// Once a patient registers, they are navigated to the login page
-
-// Redirects to: '../Auth/Login.js'
-
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import Navbar from '../../Bars/Navbar';
+import LoginBar from "../../Bars/LoginBar";
 import Footer from '../../Bars/Footer';
 
-import { patientSignUpRequest } from "../../../actions/Entry/PatientRegister";
+import { authMedLogin } from "../../../actions/Entry/MedLoginAction";
 
-import { Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles } from '@material-ui/core';
+import { Button, TextField, Grid, makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
-/*************************  Start of Patient Registration Form *************************/
+/*************************  Start of Medical Login Form *************************/
 const useStyles = makeStyles(theme => ({
   '@global': {
     body: {
@@ -36,40 +32,39 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function PatientRegisterForm(props) {
+function MedicalLogin(props) {
   const classes = useStyles();
 
-  const [patientRegister, setPatientRegister] = useState({
-    //DATA WE NEED FROM PATIENT TO REGISTER
+  const [medLogin, setMedLogin] = useState({
+    //DATA WE NEED FROM Medical TO LOGIN
     password: "",
     username: "",
-    role: "user"
+    role: "admin"
   });
 
   const handleChange = e => {
-    setPatientRegister({
-      ...patientRegister,
+    setMedLogin({
+      ...medLogin,
       [e.target.name]: e.target.value
     });
   };
 
-  const register = e => {
+  const doctorLogin = e => {
     e.preventDefault();
-    console.log('patientregister', patientRegister);
-    props.patientSignUpRequest(patientRegister, props.history);
+    console.log('patientregister', medLogin);
+    props.authMedLogin(medLogin, props.history);
   }
 
   return (
     <div>
       <Navbar />
       <div className={classes.paper}>
+       
         <Typography component="h1" variant="h5">
-          You are a patient.
-            </Typography>
-        <Typography component="h1" variant="h5">
-          Let's create your account.
-            </Typography>
-        <form onSubmit={register} className={classes.form} noValidate>
+          Login
+        </Typography>
+         <LoginBar />
+        <form onSubmit={doctorLogin} className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -77,7 +72,7 @@ function PatientRegisterForm(props) {
                 name="username"
                 variant="outlined"
                 onChange={handleChange}
-                value={patientRegister.username}
+                value={medLogin.username}
                 required
                 id="name"
                 label="username"
@@ -90,18 +85,11 @@ function PatientRegisterForm(props) {
                 required
                 name="password"
                 onChange={handleChange}
-                value={patientRegister.password}
+                value={medLogin.password}
                 label="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                required
-                control={<Checkbox value="agreeToTerms" color="primary" />}
-                label="I agree to Terms and Conditions of Immune"
               />
             </Grid>
           </Grid>
@@ -111,7 +99,7 @@ function PatientRegisterForm(props) {
             color="primary"
             className={classes.submit}
           >
-            Complete Account Creation
+            Login
               </Button>
         </form>
       </div>
@@ -121,11 +109,9 @@ function PatientRegisterForm(props) {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    patientSignUpRequest: (patientInfo, history) => dispatch(patientSignUpRequest(patientInfo, history))
+    authMedLogin: (medLogin, history) => dispatch(authMedLogin(medLogin, history))
   }
 }
 
 
-export default connect(null, mapDispatchToProps)(PatientRegisterForm);
-
-/************************* End of Patient Registration Form *************************/
+export default connect(null, mapDispatchToProps)(MedicalLogin);

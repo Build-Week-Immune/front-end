@@ -23,7 +23,7 @@ export default function MedicalHomePage() {
             <TextContainer className='bgrnd' >
                 <p>FYA ... is for Friendly Yelling</p>
                 <p>Placeholding page for now.</p>
-                <Link to=""><Button>Add Family Member</Button></Link>
+                {/* <Link to=""><Button>Add Family Member</Button></Link> */}
             </TextContainer>
             <Footer />
         </div>
