@@ -1,10 +1,8 @@
 // Contains the footer for all elements
 import React from 'react';
 import { makeStyles, BottomNavigation, BottomNavigationAction, Typography } from '@material-ui/core';
-// import BottomNavigation from '@material-ui/core/BottomNavigation';
-// import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-// import Typography from '@material-ui/core/Typography';
+
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
