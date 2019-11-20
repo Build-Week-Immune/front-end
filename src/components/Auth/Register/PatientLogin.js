@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Button, TextField, makeStyles, Grid, Typography, Paper } from '@material-ui/core';
-//import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { Button, TextField, makeStyles, Grid, Typography } from '@material-ui/core';
+
 import { authUsersLogin } from "../../../actions/Entry/LoginAction";
 import { connect } from "react-redux";
 import Navbar from '../../Bars/Navbar';
