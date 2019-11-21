@@ -6,9 +6,9 @@ export default function MedicalCard({medical}) {
     return (
         <CardContainer>
             <Link to={`/medical_Home/jonathan/${medical.id} key={medical.id}`}>
-                <h3>Medical Provider: {medical.ProviderName}</h3>
+                <h3>Medical Provider: {medical.name}</h3>
             </Link>
-            <p>Created At: {medical.created_at}</p>
+            <p>Specialist for: {medical.species}</p>
             <p>Trusted medical professional who protects your health.</p>
         </CardContainer>
     );

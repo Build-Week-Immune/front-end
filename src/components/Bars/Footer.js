@@ -28,7 +28,7 @@ export default function SimpleBottomNavigation() {
       onChange={(event, newValue) => {
         setValue(newValue);
       }}
-      showLabels
+      showLabels={false}
       className={classes.root}
     >
     <BottomNavigationAction icon={<FavoriteIcon color="disabled" />} />

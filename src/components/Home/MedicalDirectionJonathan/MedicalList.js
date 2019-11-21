@@ -11,10 +11,10 @@ export default function MedicalList() {
 
     useEffect(() => {
         const getMedicals = () => {
-            axios.get('https://immunazation.herokuapp.com/api/provider')
+            axios.get('https://rickandmortyapi.com/api/character/')
             .then(response => {
-                console.log(response.data);
-                setMedicals(response.data)
+                console.log(response.data.results);
+                setMedicals(response.data.results);
             })
             .catch(error => {
                 console.error('Server Error', error);
