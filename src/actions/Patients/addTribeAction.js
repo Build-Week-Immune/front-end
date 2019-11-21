@@ -8,8 +8,7 @@ export const addTribe = (FamMemberData, history) => dispatch => {
     dispatch({type: ADD_TRIBE_LOADING })
         console.log('test_inAdd_Family')
 
-        const authAxios = axiosWithAuth();
-        return authAxios
+        axiosWithAuth()
         .post(`/api/users`, FamMemberData )
         .then(res => {
             console.log('FamMemData',res.data)
