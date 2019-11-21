@@ -43,11 +43,15 @@ const useStyles = makeStyles(theme => ({
 function AddFamilyMember(props) {
   const classes = useStyles();
   const [addFam, setAddFam] = useState({
-    fullname: "",
-    email: "",
-    DOB: "",
-    Dr: ""
+    name: "",
+    parent_name: "",
+    contact: "",
+    gender: "",
+    DOB: "05/11/1997",
+    immunization_id: 1,
+    provider_id: 1
   })
+
 
   const handleChange = e => {
     setAddFam({
@@ -59,7 +63,7 @@ function AddFamilyMember(props) {
   const createFam = e => {
     e.preventDefault();
     console.log('addFam', addFam);
-    props.addTribe(addFam, props.history);
+    props.addTribe(addFam);
   }
   return (
     <div>
@@ -71,16 +75,16 @@ function AddFamilyMember(props) {
         <Typography variant="h5">
           Start by adding yourself!
             </Typography>
-        <form onSubmit={createFam} className={classes.form}>
+        <form onSubmit={createFam} type="submit" className={classes.form}>
           <Grid container spacing={2}>
             <Grid item xs={10}>
               <TextField
                 required
                 id="fullname"
-                value={addFam.fullname}
+                value={addFam.name}
                 onChange={handleChange}
-                name="fullname"
-                label="Full Name"
+                name="name"
+                label="name"
                 fullWidth
                 autoComplete="fname"
               />
@@ -88,16 +92,38 @@ function AddFamilyMember(props) {
             <Grid item xs={10}>
               <TextField
                 required
-                id="email"
-                value={addFam.email}
+                id="parent_name"
+                value={addFam.parent_name}
                 onChange={handleChange}
-                name="email"
+                name="parent_name"
+                label="Parent Name"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={10}>
+              <TextField
+                required
+                id="contact"
+                value={addFam.contact}
+                onChange={handleChange}
+                name="contact"
                 label="Email Address"
                 fullWidth
                 autoComplete="email"
               />
             </Grid>
             <Grid item xs={10}>
+              <TextField
+                required
+                id="gender"
+                value={addFam.gender}
+                onChange={handleChange}
+                name="gender"
+                label="gender"
+                fullWidth
+              />
+            </Grid>
+            {/* <Grid item xs={10}>
               <TextField
                 id="date"
                 value={addFam.DOB}
@@ -110,18 +136,8 @@ function AddFamilyMember(props) {
                   shrink: true,
                 }}
               />
-            </Grid>
-            <Grid item xs={10}>
-              <TextField
-                required
-                id="doctor"
-                value={addFam.Dr}
-                onChange={handleChange}
-                name="doctor"
-                label="Your Health Provider (Code)"
-                fullWidth
-              />
-            </Grid>
+            </Grid> */}
+
             <Grid item xs={8}>
               <Paper>
                 <Typography variant="h5">
@@ -144,7 +160,7 @@ function AddFamilyMember(props) {
               </Paper>
             </Grid>
           </Grid>
-          <Link to="/patient_home/:id/show_family_member">
+
           <Button
             type="submit"
             variant="contained"
@@ -152,8 +168,8 @@ function AddFamilyMember(props) {
             className={classes.submit}
           >
             Add Family Member
-                </Button>
-          </Link>
+              </Button>
+
           <Link to="/patient_home/:id">
             <Button
               variant="contained"
@@ -163,16 +179,19 @@ function AddFamilyMember(props) {
               Go Back
                 </Button>
           </Link>
+          <Link to="/patient_home/:id/display_family_immu">
+            <Button
+              variant="contained"
+              color="default"
+              className={classes.submit}>
+              Next
+              </Button></Link>
         </form>
       </div>
       <Footer />
     </div>
   );
 }
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addTribe: (FamMemberData, history) => dispatch(addTribe(FamMemberData, history))
-  }
-}
 
-export default connect(null, mapDispatchToProps)(AddFamilyMember)
+
+export default connect(null, { addTribe })(AddFamilyMember)

@@ -15,6 +15,8 @@ export default function PatientCard({props}) {
         <NameContainer>
           {props.name}
         </NameContainer>
+        <button onClick={() => props.history.push("/")} >edit</button>
+        <button>delete</button>
       {/* </Link> */}
       {/* <p>Patient Date of Birth</p>
       <p>Patient Age</p> */}

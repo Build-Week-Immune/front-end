@@ -3,13 +3,13 @@
 import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 import { getFamily } from "../../../actions/Patients/getFamilyMemberInfo";
-import PatientCard from "../../../components/Home/PatientDirection/Patients/PatientCard";
+// import PatientCard from "../../../components/Home/PatientDirection/Patients/PatientCard";
 
 import { Link } from 'react-router-dom';
 import PageNav from '../../Bars/PageNav';
 import Footer from '../../Bars/Footer';
 // import { Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles, Typography, Paper } from '@material-ui/core';
-import { Button, Typography, Grid, makeStyles }  from '@material-ui/core';
+import { Typography, Grid, makeStyles, Button, Card }  from '@material-ui/core';
 
 
 /*************************  Start of Patient Home Styles *************************/
@@ -36,51 +36,36 @@ const useStyles = makeStyles(theme => ({
 /*************************  Start of Patient Home Form *************************/
   function AddFamilyMember(props) {
     const classes = useStyles();
-  
+    
+
+
     useEffect(() => {
-      getFamily();
-      console.log("Family data", props.getFamily);
+      props.dispatch(getFamily());
+      
     },[]);
     return (
     <div>
         <PageNav />
-        <div className={classes.paper}>
-            <Typography variant="h5">
-              Family Members on Account.
-            </Typography>
 
-            {/* Testing Link to Edit Form*/}
-            <Link to="/patient_home/:id/display_family_immu/edit">
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Edit Family Member
-                  </Button>
-            </Link>
+       
+            {props.isLoading && <div>spinner</div>}
+            {props.error && <div>{props.error.message}</div>}
+            <Grid container spacing={1}>
+            
+                {props.familyMemberInfo.map(fam => (
+                  
+                    <Grid item key={fam.id} xs={6} sm={3} md={2}>
+                        <Card  className={classes.card}>
 
-
-              <Grid container spacing={2}>
-                  <Grid item xs={8} >
-                    {props.isLoading && (
-                      <div>
-                        <h2>Loading Family...</h2>
-                      </div>
-                    )}
-
-                    {props.FamilyMemberInfo &&
-                      props.FamilyMemberInfo.map(family => (
-                        <PatientCard
-                          key={family.id}
-                          name={family.name}
-                          // age={family.age}
-                          // height={family.height}
-                          // id={family.id}
-                        />
-                      ))}
-
+                            <Typography variant="h4">
+                                {fam.name}
+                            </Typography>
+                           <Button>edit</Button>
+                           <Button>delete</Button>
+                        </Card>
+                    </Grid>
+                ))}
+            </Grid>
 
                     {/* <Paper className={classes.member}>
                       <Typography variant="h5">
@@ -119,23 +104,26 @@ const useStyles = makeStyles(theme => ({
                         Your immunization records will be available after your medical office inputs your records into Immune, usually 1-2 business days.
                       </Typography>
                     </Paper> */}
-                  </Grid>
-              </Grid>
-        </div>
+                  {/* </Grid> */}
+              {/* </Grid> */}
+        {/* </div> */}
         <Footer />
     </div>
     );
 }
 
-const mapStateToProps = state => {
-  return {
-    FamilyMemberInfo: state.FamilyMemberInfo,
-    isLoading: state.isLoading,
-    error: state.error
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     familyMemberInfo: state.familyMemberInfo,
+//     isLoading: state.isLoading,
+//     error: state.error
+//   };
+// };
 
-export default connect(
-  mapStateToProps,
-  { getFamily }
-)(AddFamilyMember);
+// export default connect(
+//   mapStateToProps,
+//   { getFamily }
+// )(AddFamilyMember);
+export default connect(state => {
+  return state;
+})(AddFamilyMember);

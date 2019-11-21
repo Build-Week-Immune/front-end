@@ -43,7 +43,7 @@ function PatientRegisterForm(props) {
     //DATA WE NEED FROM PATIENT TO REGISTER
     password: "",
     username: "",
-    role: "user"
+    role: "admin"
   });
 
   const handleChange = e => {
