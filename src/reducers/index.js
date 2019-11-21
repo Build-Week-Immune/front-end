@@ -22,9 +22,16 @@ import {
     GET_FAMILY_INFO_FAILURE 
 } from "../actions/Patients/getFamilyMemberInfo";
 
+import {
+    ADD_TRIBE_LOADING,
+    ADD_TRIBE_SUCCESS,
+    ADD_TRIBE_FAIL
+} from "../actions/Patients/addTribeAction";
+
 const initialState = {
         patientInfo: [],
         MedInfo: [],
+        FamilyMemberInfo: [],
         isLoading: false,
         error: "",
         id: "",
@@ -110,12 +117,33 @@ export const reducer = ( state = initialState, action ) => {
                 case GET_FAMILY_INFO_SUCCESS:
                     return{
                         ...state,
-                        getFamilyMemberInfo: action.payload,
+                        FamilyMemberInfo: action.payload,
                         isLoading: false,
                         error: ""
                     }
                 case GET_FAMILY_INFO_FAILURE:
                     return{
+                        ...state,
+                        error: action.payload,
+                        isLoading: false
+                    }
+
+//Post Family info--------------------------------------------
+                case ADD_TRIBE_LOADING:
+                    return {
+                        ...state,
+                        isLoading:true,
+                        error: ""
+                    }
+                case ADD_TRIBE_SUCCESS:
+                    return {
+                        ...state,
+                        FamilyMemberInfo: action.payload,
+                        isLoading: false,
+                        error: ""
+                    }
+                case ADD_TRIBE_FAIL:
+                    return {
                         ...state,
                         error: action.payload,
                         isLoading: false
