@@ -19,14 +19,14 @@ import './App.css';
 function App() {
   return (
     <main className="App">
-      <Route exact path="/" component={SplashPage} />
-      <Route path="/login"  component={PatientLogin} />
-      <Route path="/med_login"  component={MedicalLogin} />
-      <Route path="/register"  component={HomeRegister} />
+      <Route path="/" exact component={SplashPage} />
+      <Route path="/login" exact component={PatientLogin} />
+      <Route path="/med_login" exact component={MedicalLogin} />
+      <Route path="/register" exact component={HomeRegister} />
       <Route path="/register/medical" component={MedicalRegisterForm} />
       <Route path="/register/patient" component={PatientRegisterForm} />
       <PrivateRoute path="/medical_home" component={MedicalHome} />
-      <PrivateRoute path="/patient_home/:id" component={PatientHome} />
+      <PrivateRoute path="/patient_home/:id" exact component={PatientHome} />
       <PrivateRoute path="/patient_home/:id/add_family" component={AddFamilyMember} />
       <PrivateRoute path="/patient_home/:id/show_family_member" component={ShowFamilyMember} />
       <PrivateRoute path="/patient_home/:id/display_family_immu" component={DisplayFamilyImmu} />

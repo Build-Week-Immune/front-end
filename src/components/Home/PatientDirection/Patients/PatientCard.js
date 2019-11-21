@@ -9,12 +9,14 @@ import styled from "styled-components";
 
 export default function PatientCard({props}) {
   return (
-    <CardContainer key = {props.id}>
+    <CardContainer key={props.id}>
 
       {/* <Link to={`/homepage-patient/${patient.id}`} key={patient.id} style={{ textDecoration: 'none' }}> */}
         <NameContainer>
           {props.name}
         </NameContainer>
+        <button onClick={() => props.history.push("/")} >edit</button>
+        <button>delete</button>
       {/* </Link> */}
       {/* <p>Patient Date of Birth</p>
       <p>Patient Age</p> */}

@@ -35,7 +35,7 @@ const PatientLogin = (props) => {
   const [patientLogin, setPatientLogin] = useState({
     password: "",
     username: "",
-    role: "user"
+    role: "admin"
   });
 
   const handleChange = e => {
