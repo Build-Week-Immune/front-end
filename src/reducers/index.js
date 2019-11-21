@@ -42,16 +42,17 @@ import {
 
 const initialState = {
     patientInfo: [],
-    MedInfo: [],
-    FamilyMemberInfo: [],
+    medInfo: [],
+    familyMemberInfo: [],
     isLoading: false,
-    error: "",
+    error: null,
     id: "",
     isAuth: localStorage.getItem('token') ? true : false
 }
 
 // 1. Patient (same as user) Register Reducer
 export const reducer = (state = initialState, action) => {
+    console.log("reducer", action);
     switch (action.type) {
 
         // Patient Login Cases---------------------------------
@@ -86,7 +87,7 @@ export const reducer = (state = initialState, action) => {
         case MED_LOGIN_SUCCESS:
             return {
                 ...state,
-                MedInfo: action.payload,
+                medInfo: action.payload,
                 isLoading: false,
                 error: "",
                 // id: action.payload
@@ -128,7 +129,7 @@ export const reducer = (state = initialState, action) => {
         case MED_REGISTER_SUCCESS:
             return {
                 ...state,
-                MedInfo: action.payload,
+                medInfo: action.payload,
                 isLoading: false,
                 error: "",
                 id: action.payload
@@ -149,7 +150,7 @@ export const reducer = (state = initialState, action) => {
         case GET_FAMILY_INFO_SUCCESS:
             return {
                 ...state,
-                FamilyMemberInfo: action.payload,
+                familyMemberInfo: action.payload,
                 isLoading: false,
                 error: ""
             }
@@ -170,7 +171,7 @@ export const reducer = (state = initialState, action) => {
         case ADD_TRIBE_SUCCESS:
             return {
                 ...state,
-                FamilyMemberInfo: action.payload,
+                familyMemberInfo: action.payload,
                 isLoading: false,
                 error: ""
             }
@@ -190,7 +191,7 @@ export const reducer = (state = initialState, action) => {
         case EDIT_FAM_SUCCESS:
             return {
                 ...state,
-                FamilyMemberInfo: action.payload,
+                familyMemberInfo: action.payload,
                 isLoading: false,
                 error: ""
             }
@@ -200,6 +201,10 @@ export const reducer = (state = initialState, action) => {
                 error: action.payload,
                 isLoading: false
             }
+            case 'DELETE_POST':
+            return state.filter((post) => post.id !== action.id);
+        case 'EDIT_POST':
+            return state.map((post) => post.id === action.id ? { ...post, editing: !post.editing } : post);
         default:
             return state;
     }
