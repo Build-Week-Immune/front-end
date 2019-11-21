@@ -27,10 +27,9 @@ function App() {
       <Route path="/register" exact component={HomeRegister} />
       <Route path="/register/medical" component={MedicalRegisterForm} />
       <Route path="/register/patient" component={PatientRegisterForm} />
-
-      {/* The next line is Jonathan's path*/}
       <PrivateRoute path="/medical_home" exact component={MedicalHome} />
-
+      
+      {/* The next line is Jonathan's path*/}
       <Route path="/medical_home/jonathan" component={MedicalList} />
       <PrivateRoute path="/patient_home/:id" exact component={PatientHome} />
       <PrivateRoute path="/patient_home/:id/add_family" component={AddFamilyMember} />
