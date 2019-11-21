@@ -35,6 +35,7 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 10, 2),
+    textDecoration: 'none',
   },
 }));
 
@@ -142,14 +143,19 @@ function EditFamilyMember({ member }) {
             </Button>
 
 
-          <Button
+          {/* <Button
             variant="contained"
             color="default"
             className={classes.submit}
           >
             Delete Family Member
-            </Button>
-          <Link to="/patient_home/:id/display_family_immu" ><Button>To Family</Button></Link>
+            </Button> */}
+          <Link to="/patient_home/:id/display_family_immu" >
+            <Button
+             variant="contained"
+             color="default"
+             className={classes.submit}
+            >To Family</Button></Link>
         </form>
       </div>
       <Footer />
