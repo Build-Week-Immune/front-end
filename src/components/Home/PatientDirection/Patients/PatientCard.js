@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 export default function PatientCard({props}) {
   return (
-    <CardContainer key = {props.id}>
+    <CardContainer key={props.id}>
 
       {/* <Link to={`/homepage-patient/${patient.id}`} key={patient.id} style={{ textDecoration: 'none' }}> */}
         <NameContainer>
