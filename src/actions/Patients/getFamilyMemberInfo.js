@@ -7,9 +7,9 @@ export const GET_FAMILY_INFO_FAILURE = "GET_FAMILY_INFO_FAILURE";
 
 export const getFamily = () => dispatch => {
     dispatch({type: GET_FAMILY_INFO_START});
-    const authAxios = axiosWithAuth();
-    authAxios
-    .get(`/api/users`)
+    const authAxios = axiosWithAuth;
+    authAxios()
+    .get(`/api/users/${2}`)
     .then(res => {
         dispatch({type: GET_FAMILY_INFO_SUCCESS, payload: res.data})
     })
