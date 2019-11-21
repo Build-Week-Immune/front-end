@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageNav from '../../Bars/PageNav';
 import Footer from '../../Bars/Footer';
-import { Button, TextField, Grid, makeStyles, Typography, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@material-ui/core';
+import { Button, TextField, Grid, makeStyles, Typography } from '@material-ui/core';
 
 /*************************  Start of Patient Home Styles *************************/
 const useStyles = makeStyles(theme => ({
@@ -36,16 +36,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function StyledRadio(props) {
-
-    return (
-      <Radio
-        color="default"
-        {...props}
-      />
-    );
-  }
-
 /*************************  Start of Patient Home Form *************************/
 function EditFamilyMember({member}) {
   const classes = useStyles();
@@ -69,14 +59,15 @@ function EditFamilyMember({member}) {
                 defaultValue="PatientName"
               />
             </Grid>
-            <Grid>
-            <FormControl component="fieldset">
-                <FormLabel component="legend">Gender</FormLabel>
-                <RadioGroup defaultValue="female" aria-label="gender" name="customized-radios">
-                    <FormControlLabel value="female" control={<StyledRadio />} label="Female" />
-                    <FormControlLabel value="male" control={<StyledRadio />} label="Male" />
-                </RadioGroup>
-            </FormControl>
+            <Grid item xs={10}>
+                <TextField
+                required
+                id="gender"
+                name="gender"
+                label="Gender: M or F"
+                fullWidth
+                defaultValue="M"
+                />
             </Grid>
             <Grid item xs={10}>
                 <TextField

@@ -5,10 +5,10 @@ import styled from 'styled-components';
 export default function MedicalCard({medical}) {
     return (
         <CardContainer>
-            <Link to={`/medical_Home/jonathan/${medical.id} key={medical.id}`}>
+            <Link to={`/medical_home/jonathan/${medical.id}`} key={medical.id}>
                 <h3>Medical Provider: {medical.name}</h3>
             </Link>
-            <p>Specialist for: {medical.species}</p>
+            <p>This location is a: {medical.type}</p>
             <p>Trusted medical professional who protects your health.</p>
         </CardContainer>
     );

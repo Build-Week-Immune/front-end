@@ -11,7 +11,7 @@ export default function MedicalList() {
 
     useEffect(() => {
         const getMedicals = () => {
-            axios.get('https://rickandmortyapi.com/api/character/')
+            axios.get('https://rickandmortyapi.com/api/location/')
             .then(response => {
                 console.log(response.data.results);
                 setMedicals(response.data.results);
