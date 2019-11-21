@@ -9,7 +9,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PageNav from '../Bars/PageNav';
 import Footer from '../Bars/Footer';
-import { Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles, Typography, Paper } from '@material-ui/core';
+import { Button, makeStyles, Typography, Paper } from '@material-ui/core';
 
 /*************************  Start of Patient Home Styles *************************/
 const useStyles = makeStyles(theme => ({
@@ -43,7 +43,7 @@ export default function PatientHomePage() {
             <Typography variant="h4">
                 Family Members on Account
             </Typography>
-            <Typography variant="p">
+            <Typography variant="h5">
                 Get started by adding yourself and family members to your Immune account.
             </Typography>
             <Link to="/patient_home/:id/add_family">

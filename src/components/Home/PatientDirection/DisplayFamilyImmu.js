@@ -1,10 +1,16 @@
 // De facto home page for patient; contains a list of record and immu record
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { connect } from "react-redux";
+import { getFamily } from "../../../actions/Patients/getFamilyMemberInfo";
+import PatientCard from "../../../components/Home/PatientDirection/Patients/PatientCard";
+
+// import { Link } from 'react-router-dom';
 import PageNav from '../../Bars/PageNav';
 import Footer from '../../Bars/Footer';
-import { Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles, Typography, Paper } from '@material-ui/core';
+// import { Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles, Typography, Paper } from '@material-ui/core';
+import { Typography, Grid, makeStyles }  from '@material-ui/core';
+
 
 /*************************  Start of Patient Home Styles *************************/
 const useStyles = makeStyles(theme => ({
@@ -28,9 +34,15 @@ const useStyles = makeStyles(theme => ({
   }));
 
 /*************************  Start of Patient Home Form *************************/
-export default function AddFamilyMember() {
+  function AddFamilyMember(props) {
     const classes = useStyles();
+  
 
+
+    useEffect(() => {
+      getFamily();
+      console.log("Family data", props.getFamily);
+    },[]);
     return (
     <div>
         <PageNav />
@@ -41,7 +53,25 @@ export default function AddFamilyMember() {
                 
               <Grid container spacing={2}>
                   <Grid item xs={8} >
-                    <Paper className={classes.member}>
+                    {props.isLoading && (
+                      <div>
+                        <h2>Loading Family...</h2>
+                      </div>
+                    )}
+
+                    {props.FamilyMemberInfo &&
+                      props.FamilyMemberInfo.map(family => (
+                        <PatientCard
+                          key={family.id}
+                          name={family.name}
+                          // age={family.age}
+                          // height={family.height}
+                          // id={family.id}
+                        />
+                      ))}
+
+
+                    {/* <Paper className={classes.member}>
                       <Typography variant="h5">
                         Scooby Doo
                       </Typography>
@@ -77,7 +107,7 @@ export default function AddFamilyMember() {
                       <Typography variant="p">
                         Your immunization records will be available after your medical office inputs your records into Immune, usually 1-2 business days.
                       </Typography>
-                    </Paper>
+                    </Paper> */}
                   </Grid>
               </Grid>
         </div>
@@ -85,3 +115,16 @@ export default function AddFamilyMember() {
     </div>
     );
 }
+
+const mapStateToProps = state => {
+  return {
+    FamilyMemberInfo: state.FamilyMemberInfo,
+    isLoading: state.isLoading,
+    error: state.error
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { getFamily }
+)(AddFamilyMember);

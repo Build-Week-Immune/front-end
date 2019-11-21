@@ -83,27 +83,7 @@ function MedicalRegisterForm(props) {
                 autoFocus
               />
             </Grid>
-            {/* <Grid item xs={12}>
-                  <TextField
-                      name="workplace"
-                      variant="outlined"
-                      
-                      required
-                      id="workplace"
-                      label="Medical Institution"
-                      autoFocus
-                  />
-                  </Grid> */}
-            {/* <Grid item xs={12}>
-                  <TextField
-                      variant="outlined"
-                      required
-                      id="email"
-                      label="Email Address"
-                      name="email"
-                      autoComplete="email"
-                  />
-                  </Grid> */}
+
                   <Grid item xs={12}>
                   <TextField
                       variant="outlined"
