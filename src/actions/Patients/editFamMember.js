@@ -4,7 +4,7 @@ export const EDIT_FAM_LOADING = "EDIT_FAM_LOADING";
 export const EDIT_FAM_SUCCESS = "EDIT_FAM_SUCCESS";
 export const EDIT_FAM_FAIL = "EDIT_FAM_FAIL";
 
-export const editFamilyMember = (FamMemberData, id, history) => dispatch => {
+export const editFamMemb = (FamMemberData, id, history) => dispatch => {
    dispatch({ type: EDIT_FAM_LOADING })
    console.log('test_n_editFamilyMember')
 

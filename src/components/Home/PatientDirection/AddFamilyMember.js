@@ -81,10 +81,10 @@ function AddFamilyMember(props) {
               <TextField
                 required
                 id="fullname"
-                value={addFam.name}
-                onChange={handleChange}
                 name="name"
                 label="name"
+                value={addFam.name}
+                onChange={handleChange}
                 fullWidth
                 autoComplete="fname"
               />
@@ -93,10 +93,10 @@ function AddFamilyMember(props) {
               <TextField
                 required
                 id="parent_name"
-                value={addFam.parent_name}
-                onChange={handleChange}
                 name="parent_name"
                 label="Parent Name"
+                value={addFam.parent_name}
+                onChange={handleChange}
                 fullWidth
               />
             </Grid>
@@ -104,10 +104,10 @@ function AddFamilyMember(props) {
               <TextField
                 required
                 id="contact"
-                value={addFam.contact}
-                onChange={handleChange}
                 name="contact"
                 label="Email Address"
+                value={addFam.contact}
+                onChange={handleChange}
                 fullWidth
                 autoComplete="email"
               />
@@ -116,10 +116,10 @@ function AddFamilyMember(props) {
               <TextField
                 required
                 id="gender"
-                value={addFam.gender}
-                onChange={handleChange}
                 name="gender"
                 label="gender"
+                value={addFam.gender}
+                onChange={handleChange}
                 fullWidth
               />
             </Grid>
@@ -127,7 +127,7 @@ function AddFamilyMember(props) {
               <TextField
                 id="date"
                 value={addFam.DOB}
-                onChange={handleChange}
+                onInput={handleChange}
                 label="Date of Birth"
                 type="date"
                 defaultValue="1999-12-31"
