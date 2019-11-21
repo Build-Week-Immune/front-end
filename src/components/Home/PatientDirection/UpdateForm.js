@@ -1,7 +1,9 @@
 // This is a form that's going to update everything
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import {connect } from 'react-redux'
+import { editFamilyMember } from '../../../actions/Patients/editFamMember';
 import PageNav from '../../Bars/PageNav';
 import Footer from '../../Bars/Footer';
 import { Button, TextField, Grid, makeStyles, Typography } from '@material-ui/core';
@@ -147,7 +149,7 @@ function EditFamilyMember({ member }) {
           >
             Delete Family Member
             </Button>
-
+            <Link><Button>To Family</Button></Link>
         </form>
       </div>
       <Footer />
@@ -155,4 +157,4 @@ function EditFamilyMember({ member }) {
   );
 }
 
-export default EditFamilyMember;
+export default connect(null, { editFamilyMember })(EditFamilyMember)
