@@ -37,8 +37,25 @@ const useStyles = makeStyles(theme => ({
 }));
 
 /*************************  Start of Patient Home Form *************************/
-function EditFamilyMember({member}) {
+function EditFamilyMember({ member }) {
   const classes = useStyles();
+  const [addFam, setAddFam] = useState({
+    name: "",
+    parent_name: "",
+    contact: "",
+    gender: "",
+    DOB: "05/11/1997",
+    immunization_id: 1,
+    provider_id: 1
+  })
+  const handleChange = e => {
+    setAddFam({
+      ...addFam,
+      [e.target.name]: e.target.value
+    });
+  };
+
+
 
   return (
     <div>
@@ -47,39 +64,58 @@ function EditFamilyMember({member}) {
         <Typography variant="h5">
           Please edit your information.
         </Typography>
-        <form className={classes.form}>
+        <form type="submit" className={classes.form}>
           <Grid container spacing={2}>
             <Grid item xs={10}>
               <TextField
                 required
-                id="fullname"
-                name="fullname"
+                id="name"
+                name="name"
                 label="Full Name"
+                value={addFam.name}
+                onChange={handleChange}
                 fullWidth
                 defaultValue="PatientName"
               />
             </Grid>
             <Grid item xs={10}>
-                <TextField
+              <TextField
+                required
+                id="parent_name"
+                name="parent_name"
+                label="Parent Name"
+                value={addFam.parent_name}
+                onChange={handleChange}
+                fullWidth
+                defaultValue="ParentName"
+              />
+            </Grid>
+            <Grid item xs={10}>
+              <TextField
+                required
+                id="contact"
+                name="contact"
+                label="Email Address"
+                value={addFam.contact}
+                onChange={handleChange}
+                fullWidth
+                defaultValue="PatientEmail"
+              />
+            </Grid>
+            <Grid item xs={10}>
+              <TextField
                 required
                 id="gender"
                 name="gender"
                 label="Gender: M or F"
+                value={addFam.gender}
+                onChange={handleChange}
                 fullWidth
                 defaultValue="M"
-                />
+              />
             </Grid>
-            <Grid item xs={10}>
-                <TextField
-                required
-                id="parentname"
-                name="parentname"
-                label="Parent Name"
-                fullWidth
-                defaultValue="ParentName"
-                />
-            </Grid>
-{/*            <Grid item xs={10}>
+
+            {/*<Grid item xs={10}>
               <TextField
                 id="date"
                 label="Date of Birth"
@@ -91,18 +127,9 @@ function EditFamilyMember({member}) {
                 }}
               />
             </Grid>*/}
-            <Grid item xs={10}>
-              <TextField
-                required
-                id="email"
-                name="email"
-                label="Email Address"
-                fullWidth
-                defaultValue="PatientEmail"
-              />
-            </Grid>
+
           </Grid>
-          <Link>
+
           <Button
             type="submit"
             variant="contained"
@@ -110,17 +137,17 @@ function EditFamilyMember({member}) {
             className={classes.submit}
           >
             Save Changes
-                </Button>
-          </Link>
-          <Link>
-            <Button
-              variant="contained"
-              color="default"
-              className={classes.submit}
-            >
-              Delete Family Member
             </Button>
-          </Link>
+
+
+          <Button
+            variant="contained"
+            color="default"
+            className={classes.submit}
+          >
+            Delete Family Member
+            </Button>
+
         </form>
       </div>
       <Footer />
