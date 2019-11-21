@@ -6,7 +6,7 @@ import { getFamily } from "../../../actions/Patients/getFamilyMemberInfo";
 import PatientCard from "../../../components/Home/PatientDirection/Patients/PatientCard";
 
 // import { Link } from 'react-router-dom';
-// import PageNav from '../../Bars/PageNav';
+import PageNav from '../../Bars/PageNav';
 import Footer from '../../Bars/Footer';
 // import { Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles, Typography, Paper } from '@material-ui/core';
 import { Typography, Grid, makeStyles }  from '@material-ui/core';
@@ -36,6 +36,7 @@ const useStyles = makeStyles(theme => ({
 /*************************  Start of Patient Home Form *************************/
   function AddFamilyMember(props) {
     const classes = useStyles();
+  
 
 
     useEffect(() => {
@@ -44,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     },[]);
     return (
     <div>
-        {/* <PageNav /> */}
+        <PageNav />
         <div className={classes.paper}>
             <Typography variant="h5">
               Family Members on Account.
@@ -58,8 +59,8 @@ const useStyles = makeStyles(theme => ({
                       </div>
                     )}
 
-                    {props.getFamilyMemberInfo &&
-                      props.getFamilyMemberInfo.map(family => (
+                    {props.FamilyMemberInfo &&
+                      props.FamilyMemberInfo.map(family => (
                         <PatientCard
                           key={family.id}
                           name={family.name}
@@ -117,7 +118,7 @@ const useStyles = makeStyles(theme => ({
 
 const mapStateToProps = state => {
   return {
-    getFamilyMemberInfo: state.getFamilyMemberInfo,
+    FamilyMemberInfo: state.FamilyMemberInfo,
     isLoading: state.isLoading,
     error: state.error
   };

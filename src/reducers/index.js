@@ -34,6 +34,12 @@ import {
     ADD_TRIBE_FAIL
 } from "../actions/Patients/addTribeAction";
 
+import {
+    EDIT_FAM_LOADING,
+    EDIT_FAM_SUCCESS,
+    EDIT_FAM_FAIL
+} from "../actions/Patients/editFamMember";
+
 const initialState = {
     patientInfo: [],
     MedInfo: [],
@@ -61,7 +67,7 @@ export const reducer = (state = initialState, action) => {
                 patientInfo: action.payload,
                 isLoading: false,
                 error: "",
-                id: action.payload
+                // id: action.payload
             }
         case LOGIN_FAILURE:
             return {
@@ -83,7 +89,7 @@ export const reducer = (state = initialState, action) => {
                 MedInfo: action.payload,
                 isLoading: false,
                 error: "",
-                id: action.payload
+                // id: action.payload
             }
         case MED_LOGIN_FAILURE:
             return {
@@ -174,10 +180,28 @@ export const reducer = (state = initialState, action) => {
                 error: action.payload,
                 isLoading: false
             }
-
+        // Edit Family Member Info--------------------------------------------
+        case EDIT_FAM_LOADING:
+            return {
+                ...state,
+                isLoading: true,
+                error: ""
+            }
+        case EDIT_FAM_SUCCESS:
+            return {
+                ...state,
+                FamilyMemberInfo: action.payload,
+                isLoading: false,
+                error: ""
+            }
+        case EDIT_FAM_FAIL:
+            return {
+                ...state,
+                error: action.payload,
+                isLoading: false
+            }
         default:
             return state;
     }
 }
 
-// export default reducer;

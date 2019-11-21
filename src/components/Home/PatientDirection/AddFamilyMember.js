@@ -144,7 +144,7 @@ function AddFamilyMember(props) {
               </Paper>
             </Grid>
           </Grid>
-          {/* <Link to="/patient_home/:id/show_family_member"> */}
+          <Link to="/patient_home/:id/show_family_member">
           <Button
             type="submit"
             variant="contained"
@@ -153,7 +153,7 @@ function AddFamilyMember(props) {
           >
             Add Family Member
                 </Button>
-          {/* </Link> */}
+          </Link>
           <Link to="/patient_home/:id">
             <Button
               variant="contained"
