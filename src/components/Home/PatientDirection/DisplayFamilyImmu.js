@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { getFamily } from "../../../actions/Patients/getFamilyMemberInfo";
 // import PatientCard from "../../../components/Home/PatientDirection/Patients/PatientCard";
 
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PageNav from '../../Bars/PageNav';
 import Footer from '../../Bars/Footer';
 // import { Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles, Typography, Paper } from '@material-ui/core';

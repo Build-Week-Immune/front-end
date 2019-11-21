@@ -15,8 +15,13 @@ import AddFamilyMember from './components/Home/PatientDirection/AddFamilyMember'
 import ShowFamilyMember from './components/Home/PatientDirection/ShowFamilyMember';
 import DisplayFamilyImmu from './components/Home/PatientDirection/DisplayFamilyImmu';
 import './App.css';
+import UpdateForm from './components/Home/PatientDirection/UpdateForm';
 
-function App() {
+// Jonathan's stuff
+import MedicalList from './components/Home/MedicalDirectionJonathan/MedicalList';
+import Medical from './components/Home/MedicalDirectionJonathan/Medical';
+
+function App(props) {
   return (
     <main className="App">
       <Route path="/" exact component={SplashPage} />
@@ -25,11 +30,17 @@ function App() {
       <Route path="/register" exact component={HomeRegister} />
       <Route path="/register/medical" component={MedicalRegisterForm} />
       <Route path="/register/patient" component={PatientRegisterForm} />
-      <PrivateRoute path="/medical_home" component={MedicalHome} />
+      <PrivateRoute path="/medical_home" exact component={MedicalHome} />
+
+      {/* The next line is Jonathan's path*/}
+      <Route path="/medical_home/jonathan" exact {...props} component={MedicalList} />
+      <Route path="/medical_home/jonathan/:id" {...props} component={Medical} />
+
       <PrivateRoute path="/patient_home/:id" exact component={PatientHome} />
       <PrivateRoute path="/patient_home/:id/add_family" component={AddFamilyMember} />
       <PrivateRoute path="/patient_home/:id/show_family_member" component={ShowFamilyMember} />
-      <PrivateRoute path="/patient_home/:id/display_family_immu" component={DisplayFamilyImmu} />
+      <PrivateRoute path="/patient_home/:id/display_family_immu" exact component={DisplayFamilyImmu} />
+      <PrivateRoute path="/patient_home/:id/display_family_immu/edit" component={UpdateForm} />
     </main>
   );
 }
