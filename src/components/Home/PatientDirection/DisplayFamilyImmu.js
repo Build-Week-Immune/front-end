@@ -5,11 +5,11 @@ import { connect } from "react-redux";
 import { getFamily } from "../../../actions/Patients/getFamilyMemberInfo";
 import PatientCard from "../../../components/Home/PatientDirection/Patients/PatientCard";
 
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PageNav from '../../Bars/PageNav';
 import Footer from '../../Bars/Footer';
 // import { Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles, Typography, Paper } from '@material-ui/core';
-import { Typography, Grid, makeStyles }  from '@material-ui/core';
+import { Button, Typography, Grid, makeStyles }  from '@material-ui/core';
 
 
 /*************************  Start of Patient Home Styles *************************/
@@ -37,8 +37,6 @@ const useStyles = makeStyles(theme => ({
   function AddFamilyMember(props) {
     const classes = useStyles();
   
-
-
     useEffect(() => {
       getFamily();
       console.log("Family data", props.getFamily);
@@ -50,7 +48,20 @@ const useStyles = makeStyles(theme => ({
             <Typography variant="h5">
               Family Members on Account.
             </Typography>
-                
+
+            {/* Testing Link to Edit Form*/}
+            <Link to="/patient_home/:id/display_family_immu/edit">
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Edit Family Member
+                  </Button>
+            </Link>
+
+
               <Grid container spacing={2}>
                   <Grid item xs={8} >
                     {props.isLoading && (

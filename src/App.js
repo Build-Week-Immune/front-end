@@ -16,6 +16,7 @@ import AddFamilyMember from './components/Home/PatientDirection/AddFamilyMember'
 import ShowFamilyMember from './components/Home/PatientDirection/ShowFamilyMember';
 import DisplayFamilyImmu from './components/Home/PatientDirection/DisplayFamilyImmu';
 import './App.css';
+import UpdateForm from './components/Home/PatientDirection/UpdateForm';
 
 function App() {
   return (
@@ -34,7 +35,8 @@ function App() {
       <PrivateRoute path="/patient_home/:id" exact component={PatientHome} />
       <PrivateRoute path="/patient_home/:id/add_family" component={AddFamilyMember} />
       <PrivateRoute path="/patient_home/:id/show_family_member" component={ShowFamilyMember} />
-      <PrivateRoute path="/patient_home/:id/display_family_immu" component={DisplayFamilyImmu} />
+      <PrivateRoute path="/patient_home/:id/display_family_immu" exact component={DisplayFamilyImmu} />
+      <PrivateRoute path="/patient_home/:id/display_family_immu/edit" component={UpdateForm} />
     </main>
   );
 }
