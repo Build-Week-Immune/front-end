@@ -6,14 +6,14 @@ export const GET_FAMILY_INFO_SUCCESS = "GET_FAMILY_INFO_SUCCESS";
 export const GET_FAMILY_INFO_FAILURE = "GET_FAMILY_INFO_FAILURE";
 
 export const getFamily = () => dispatch => {
-    dispatch({type: GET_FAMILY_INFO_START});
-    const authAxios = axiosWithAuth();
-    authAxios
-    .get(`/api/users`)
-    .then(res => {
-        dispatch({type: GET_FAMILY_INFO_SUCCESS, payload: res.data})
-    })
-    .catch(err => {
-        dispatch({type: GET_FAMILY_INFO_FAILURE, payload: err })
-    });
-} ;
+    dispatch({ type: GET_FAMILY_INFO_START });
+
+    axiosWithAuth()
+        .get(`/api/users`)
+        .then(res => {
+            dispatch({ type: GET_FAMILY_INFO_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            dispatch({ type: GET_FAMILY_INFO_FAILURE, payload: err })
+        });
+};
