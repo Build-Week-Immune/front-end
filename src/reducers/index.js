@@ -40,6 +40,12 @@ import {
     EDIT_FAM_FAIL
 } from "../actions/Patients/editFamMember";
 
+import {
+    DELETE_FAM_MEM_START,
+    DELETE_FAM_MEM_SUCCESS,
+    DELETE_FAM_MEM_FAILURE
+} from "../actions/Patients/DeleteFamMember";
+
 const initialState = {
     patientInfo: [],
     medInfo: [],
@@ -201,10 +207,30 @@ export const reducer = (state = initialState, action) => {
                 error: action.payload,
                 isLoading: false
             }
-            case 'DELETE_POST':
-            return state.filter((post) => post.id !== action.id);
-        case 'EDIT_POST':
-            return state.map((post) => post.id === action.id ? { ...post, editing: !post.editing } : post);
+    // Delete Fam Member---------------------------------
+    case DELETE_FAM_MEM_START: 
+    return {
+        ...state,
+        isLoading: true,
+        error: "",
+    }
+    case DELETE_FAM_MEM_SUCCESS:
+        return {
+            ...state,
+            familyMemberInfo: action.payload,
+            isLoading: false,
+            error: ""
+        }
+    case DELETE_FAM_MEM_FAILURE:
+        return {
+            ...state,
+                error: action.payload,
+                isLoading: false
+        }
+        //     case 'DELETE_POST':
+        //     return state.filter((post) => post.id !== action.id);
+        // case 'EDIT_POST':
+        //     return state.map((post) => post.id === action.id ? { ...post, editing: !post.editing } : post);
         default:
             return state;
     }
