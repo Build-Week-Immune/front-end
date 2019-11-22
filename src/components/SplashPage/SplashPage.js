@@ -27,6 +27,11 @@ export default function SplashPage() {
                         Create Account
                     </Link>
                 </ButtonContainer>
+                <ButtonContainer>
+                    <Link to="/medical_home/jonathan">
+                    Go To Jonathan's Place
+                </Link>
+            </ButtonContainer>
             </TextContainer>
             <CardsContainer>
                 <p>Whether you are a patient or medical staff, we have you covered.</p>
