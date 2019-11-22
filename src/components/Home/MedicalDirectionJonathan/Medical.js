@@ -3,7 +3,7 @@ import axios from 'axios';
 import PageNav from "../../Bars/PageNav";
 import Footer from "../../Bars/Footer.js";
 import MedicalCard from "./MedicalCard";
-import { Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles, Typography, Paper, Card } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 export default function Medical(props) {
