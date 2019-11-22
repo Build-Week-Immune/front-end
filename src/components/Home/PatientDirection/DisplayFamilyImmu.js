@@ -60,7 +60,7 @@ const useStyles = makeStyles(theme => ({
                             <Typography variant="h4">
                                 {fam.name}
                             </Typography>
-                           <Link to="/patient_home/:id/display_family_immu/edit" ><Button key={fam.id}  >edit</Button></Link>
+                           <Link to={`/patient_home/${fam.id}/display_family_immu/edit`} ><Button >edit</Button></Link>
                            <Button key={fam.id} >delete</Button>
                         </Card>
                     </Grid>

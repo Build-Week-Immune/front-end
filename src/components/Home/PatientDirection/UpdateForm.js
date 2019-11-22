@@ -1,6 +1,6 @@
 // This is a form that's going to update everything
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { editFamMemb } from '../../../actions/Patients/editFamMember';
@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 /*************************  Start of Patient Home Form *************************/
-function EditFamilyMember({ member }) {
+function EditFamilyMember( props ) {
   const classes = useStyles();
   const [addFam, setAddFam] = useState({
     name: "",
@@ -58,7 +58,18 @@ function EditFamilyMember({ member }) {
     });
   };
 
+  useEffect(() => {
+setAddFam(props.familyMemberInfo.find(fam => props.match.params.id === fam.id.toString()))
+  },[])
+// console.log(props.match.params.id)
+// console.log(props.familyMemberInfo)
+// console.log('addFam', addFam)
 
+const handleSubmit = e => {
+  e.preventDefault();
+  console.log('pickles', addFam);
+  props.editFamMemb(addFam, props.match.params.id);
+}
 
   return (
     <div>
@@ -67,7 +78,7 @@ function EditFamilyMember({ member }) {
         <Typography variant="h5">
           Please edit your information.
         </Typography>
-        <form type="submit" className={classes.form}>
+        <form type="submit" onSubmit={handleSubmit} className={classes.form}>
           <Grid container spacing={2}>
             <Grid item xs={10}>
               <TextField
@@ -163,4 +174,6 @@ function EditFamilyMember({ member }) {
   );
 }
 
-export default connect(null, { editFamMemb })(EditFamilyMember)
+export default connect(state => {
+  return state;
+}, { editFamMemb })(EditFamilyMember)
