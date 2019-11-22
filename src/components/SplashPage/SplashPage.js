@@ -28,7 +28,7 @@ export default function SplashPage() {
                     </Link>
                 </ButtonContainer>
                 <ButtonContainer>
-                    <Link to="/medical_home/jonathan">
+                    <Link to="/medical_home/">
                     Go To Jonathan's Place
                 </Link>
             </ButtonContainer>
