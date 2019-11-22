@@ -10,8 +10,8 @@
 
 import React from 'react';
 import styled from "styled-components";
-// import { Link } from 'react-router-dom';
-// import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 
 import PageNav from '../Bars/PageNav';
 import Footer from '../Bars/Footer';
@@ -23,7 +23,7 @@ export default function MedicalHomePage() {
             <TextContainer className='bgrnd' >
                 <p>FYA ... is for Friendly Yelling</p>
                 <p>Placeholding page for now.</p>
-                {/* <Link to=""><Button>Add Family Member</Button></Link> */}
+                <Link to="/medical_home/jonathan"><Button>Link to Jonathan's Random Page</Button></Link> 
             </TextContainer>
             <Footer />
         </div>
