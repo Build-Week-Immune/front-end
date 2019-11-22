@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 import { getFamily } from "../../../actions/Patients/getFamilyMemberInfo";
+import { deleteFamily } from '../../../actions/Patients/DeleteFamMember';
 // import PatientCard from "../../../components/Home/PatientDirection/Patients/PatientCard";
 
 import { Link } from 'react-router-dom';
@@ -61,7 +62,7 @@ const useStyles = makeStyles(theme => ({
                                 {fam.name}
                             </Typography>
                            <Link to={`/patient_home/${fam.id}/display_family_immu/edit`} ><Button >edit</Button></Link>
-                           <Button key={fam.id} >delete</Button>
+                           <Button key={fam.id} onClick={() => (props.dispatch(deleteFamily(fam.id)))} >delete</Button>
                         </Card>
                     </Grid>
                 ))}
