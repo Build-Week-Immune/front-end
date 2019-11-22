@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
 import PageNav from "../../Bars/PageNav";
 import Footer from "../../Bars/Footer.js";
+import MedicalCard from "./MedicalCard";
+import { Button, TextField, FormControlLabel, Checkbox, Grid, makeStyles, Typography, Paper, Card } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 export default function Medical(props) {
     const [medical, setMedical] = useState([]);
@@ -21,19 +23,9 @@ export default function Medical(props) {
     return (
         <div>
             <PageNav />
-            <CardContainer>
-                <h3>Medical Provider: {medical.name}</h3>
-                <p>This location is a: {medical.type}</p>
-                <p>Trusted medical professional who protects your health.</p>
-            </CardContainer>
+            <MedicalCard medical={medical} />
+            <Link to="/medical_home/jonathan"><Button>Go Back</Button></Link>
             <Footer />
         </div>
     );
 }
-
-const CardContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 25px;
-    background-color: skyblue;
-`
